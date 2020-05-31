@@ -28,6 +28,18 @@
 /processorParam:TextureFormat=Color
 /build:Scenes/BG_landscape.png
 
+#begin Sprites/RX_ANIM_global.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/RX_ANIM_global.png
+
 #begin Sprites/RX_ANIM_Idle_2.png
 /importer:TextureImporter
 /processor:TextureProcessor
