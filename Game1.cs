@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Media;
 using Nez;
+using Nez.Sprites;
 
 namespace game
 {
@@ -19,8 +21,20 @@ namespace game
             // Background image setup
             var landscape = scene.Content.LoadTexture("Scenes/background_dark_landscape");
             var backgroundEntity = scene.CreateEntity("background");
-            // backgroundEntity.AddComponent(new SpriteRenderer(landscape));
+            backgroundEntity.AddComponent(new SpriteRenderer(landscape));
             backgroundEntity.SetPosition(new Vector2(landscape.Width / 2, landscape.Height / 2));
+
+            // Foreground image setup
+            SpriteAtlas atlas = scene.Content.LoadSpriteAtlas("Content/animations.atlas");
+            var foreground = scene.CreateEntity("rain");
+            var rain = foreground.AddComponent<SpriteAnimator>().AddAnimationsFromAtlas(atlas);
+            rain.RenderLayer = -10;
+            foreground.SetPosition(new Vector2(landscape.Width / 2, landscape.Height / 2));
+            rain.Play("rain");
+
+            //Radio setup
+            var radio = scene.CreateEntity("radio");
+            radio.AddComponent(new Radio());
 
             // Player setup
             var hero = scene.CreateEntity("hero");
@@ -30,13 +44,10 @@ namespace game
             var ground = scene.CreateEntity("ground");
             ground.AddComponent(new BoxCollider(0, landscape.Height - 10, landscape.Width, 10));
 
-            //Radio setup
-            var radio = scene.CreateEntity("radio");
-            radio.AddComponent(new Radio());
-
             // Audio setup
-            // var audioFile = scene.Content.Load<Song>("Sound/radio");
-            // MediaPlayer.Play(audioFile);
+            var audioFile = scene.Content.Load<Song>("Sound/ambient.wind-thunder-rain");
+            MediaPlayer.Volume = 0.3f;
+            MediaPlayer.Play(audioFile);
 
             Scene = scene;
         }

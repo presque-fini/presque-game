@@ -17,6 +17,8 @@ namespace game
         private Vector2 _velocity;
         private VirtualIntegerAxis _xAxisInput;
         private VirtualButton _runInput;
+        private int frameCount = 0;
+        private string animation = "john.idle";
 
         public override void OnAddedToEntity()
         {
@@ -25,6 +27,7 @@ namespace game
             _boxCollider = Entity.AddComponent<BoxCollider>();
             _mover = Entity.AddComponent<Mover>();
             _animator = Entity.AddComponent<SpriteAnimator>().AddAnimationsFromAtlas(heroAtlas);
+            _animator.RenderLayer = 0;
 
             SetupInput();
         }
@@ -45,22 +48,23 @@ namespace game
             CollisionResult collisionResult;
             Vector2 deltaMovement = new Vector2(0);
             Vector2 moveDir = new Vector2(_xAxisInput.Value, 0);
-            string animation = "john.idle";
 
             _velocity.Y += 50 * Time.DeltaTime;
             deltaMovement.Y = _velocity.Y;
+            MoveSpeed = 100;
+            _animator.Speed = 1;
+
+            animation = "john.idle";
 
             if (_boxCollider.CollidesWithAny(ref deltaMovement, out collisionResult) && collisionResult.Normal.Y < 0)
             {
                 // reset velocity to prevent movement without user input
                 _velocity = Vector2.Zero;
-                MoveSpeed = 100;
-                _animator.Speed = 1;
                 if (moveDir.X < 0)
                 {
                     _animator.FlipX = true;
                     animation = "john.walk";
-                    if(_runInput.IsDown)
+                    if (_runInput.IsDown)
                     {
                         animation = "john.run";
                         MoveSpeed = 400;
@@ -86,7 +90,9 @@ namespace game
             deltaMovement += _velocity * Time.DeltaTime;
             _mover.Move(deltaMovement, out collisionResult);
             if (!_animator.IsAnimationActive(animation))
+            {
                 _animator.Play(animation);
+            }
         }
     }
 }
