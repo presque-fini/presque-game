@@ -16,7 +16,7 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin Scenes/BG_landscape.png
+#begin Scenes/background_dark_landscape.jpg
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -26,7 +26,13 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Scenes/BG_landscape.png
+/build:Scenes/background_dark_landscape.jpg
+
+#begin Sound/radio.wav
+/importer:WavImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sound/radio.wav
 
 #begin Sprites/RX_ANIM_global.png
 /importer:TextureImporter
@@ -39,16 +45,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/RX_ANIM_global.png
-
-#begin Sprites/RX_ANIM_Idle_2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Sprites/RX_ANIM_Idle_2.png
 

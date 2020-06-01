@@ -59,12 +59,6 @@ namespace game
 
         private void SetupInput()
         {
-            // setup input for jumping. we will allow z on the keyboard or a on the gamepad
-            _jumpInput = new VirtualButton();
-            _jumpInput.Nodes.Add(new VirtualButton.KeyboardKey(Keys.Space));
-            _jumpInput.Nodes.Add(new VirtualButton.GamePadButton(0, Buttons.A));
-
-            // horizontal input from dpad, left stick or keyboard left/right
             _xAxisInput = new VirtualIntegerAxis();
             _xAxisInput.Nodes.Add(new VirtualAxis.GamePadDpadLeftRight());
             _xAxisInput.Nodes.Add(new VirtualAxis.GamePadLeftStickX());
@@ -100,10 +94,6 @@ namespace game
                         _velocity.X = MoveSpeed;
                         _animator.FlipX = false;
                         animation = "Walking";
-                    }
-                    if (_jumpInput.IsPressed)
-                    {
-                        _velocity.Y = -Mathf.Sqrt(2f * JumpHeight * Gravity);
                     }
                 }
             }
