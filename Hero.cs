@@ -41,30 +41,26 @@ namespace game
             CollisionResult collisionResult;
             Vector2 deltaMovement = new Vector2(0);
             Vector2 moveDir = new Vector2(_xAxisInput.Value, 0);
-            string animation = "john.walk";
+            string animation = "john.idle";
 
             _velocity.Y += 50 * Time.DeltaTime;
             deltaMovement.Y = _velocity.Y;
 
-            if (_boxCollider.CollidesWithAny(ref deltaMovement, out collisionResult))
+            if (_boxCollider.CollidesWithAny(ref deltaMovement, out collisionResult) && collisionResult.Normal.Y < 0)
             {
-                // only allow horizontal movement and jumping if the player is on the ground
-                if (collisionResult.Normal.Y < 0)
+                // reset velocity to prevent movement without user input
+                _velocity = Vector2.Zero;
+                if (moveDir.X < 0)
                 {
-                    // reset velocity to prevent movement without user input
-                    _velocity = Vector2.Zero;
-                    if (moveDir.X < 0)
-                    {
-                        _velocity.X = -MoveSpeed;
-                        _animator.FlipX = true;
-                        animation = "john.walk";
-                    }
-                    else if (moveDir.X > 0)
-                    {
-                        _velocity.X = MoveSpeed;
-                        _animator.FlipX = false;
-                        animation = "john.walk";
-                    }
+                    _velocity.X = -MoveSpeed;
+                    _animator.FlipX = true;
+                    animation = "john.walk";
+                }
+                else if (moveDir.X > 0)
+                {
+                    _velocity.X = MoveSpeed;
+                    _animator.FlipX = false;
+                    animation = "john.walk";
                 }
             }
 

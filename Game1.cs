@@ -11,7 +11,7 @@ namespace game
         protected override void Initialize()
         {
             base.Initialize();
-            DebugRenderEnabled = true;
+            //DebugRenderEnabled = true;
             Scene.SetDefaultDesignResolution(1280, 720, Scene.SceneResolutionPolicy.ShowAllPixelPerfect);
 
             var scene = Scene.CreateWithDefaultRenderer(Color.LightGoldenrodYellow);
@@ -25,7 +25,6 @@ namespace game
             // Player setup
             var hero = scene.CreateEntity("hero");
             hero.AddComponent(new Hero());
-            hero.Position = new Vector2(400);
 
             // Ground setup
             var ground = scene.CreateEntity("ground");

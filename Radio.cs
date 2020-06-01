@@ -7,7 +7,7 @@ namespace game
 {
     internal class Radio : Component, IUpdatable
     {
-        private SoundEffectInstance soundEffect;
+        private SoundEffectInstance soundEffectInstance;
         private AudioListener listener;
         private AudioEmitter emitter;
 
@@ -22,18 +22,18 @@ namespace game
             Entity.SetScale(1.5f);
 
             var radioSound = Entity.Scene.Content.LoadSoundEffect("Sound/effect_radio");
-            soundEffect = radioSound.CreateInstance();
+            soundEffectInstance = radioSound.CreateInstance();
         }
 
         void IUpdatable.Update()
         {
             listener.Position = new Vector3(Entity.Scene.Entities.FindEntity("hero").Position, 0);
             emitter.Position = new Vector3(Entity.Position, 0);
-            soundEffect.Apply3D(listener, emitter);
+            soundEffectInstance.Apply3D(listener, emitter);
 
-            if (soundEffect.State != SoundState.Playing)
+            if (soundEffectInstance.State != SoundState.Playing)
             {
-                soundEffect.Play();
+                soundEffectInstance.Play();
             }
         }
     }
