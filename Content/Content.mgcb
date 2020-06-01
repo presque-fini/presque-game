@@ -46,6 +46,12 @@
 /processorParam:TextureFormat=Color
 /build:Scenes/background_dark_landscape.jpg
 
+#begin Sound/ambient.wind-thunder-rain.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sound/ambient.wind-thunder-rain.mp3
+
 #begin Sound/effect.radio.ogg
 /importer:OggImporter
 /processor:SoundEffectProcessor
