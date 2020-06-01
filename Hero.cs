@@ -16,6 +16,7 @@ namespace game
         private Mover _mover;
         private Vector2 _velocity;
         private VirtualIntegerAxis _xAxisInput;
+        private VirtualButton _runInput;
 
         public override void OnAddedToEntity()
         {
@@ -34,6 +35,9 @@ namespace game
             _xAxisInput.Nodes.Add(new VirtualAxis.GamePadDpadLeftRight());
             _xAxisInput.Nodes.Add(new VirtualAxis.GamePadLeftStickX());
             _xAxisInput.Nodes.Add(new VirtualAxis.KeyboardKeys(VirtualInput.OverlapBehavior.TakeNewer, Keys.Left, Keys.Right));
+
+            _runInput = new VirtualButton();
+            _runInput.Nodes.Add(new VirtualButton.KeyboardKey(Keys.LeftShift));
         }
 
         void IUpdatable.Update()
@@ -55,12 +59,24 @@ namespace game
                     _velocity.X = -MoveSpeed;
                     _animator.FlipX = true;
                     animation = "john.walk";
+                    if(_runInput.IsDown)
+                    {
+                        animation = "john.run";
+                        MoveSpeed = 400;
+                        _animator.Speed = 1.5f;
+                    }
                 }
                 else if (moveDir.X > 0)
                 {
                     _velocity.X = MoveSpeed;
                     _animator.FlipX = false;
                     animation = "john.walk";
+                    if (_runInput.IsDown)
+                    {
+                        animation = "john.run";
+                        MoveSpeed = 400;
+                        _animator.Speed = 1.5f;
+                    }
                 }
             }
 
