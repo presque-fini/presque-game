@@ -54,9 +54,10 @@ namespace game
             {
                 // reset velocity to prevent movement without user input
                 _velocity = Vector2.Zero;
+                MoveSpeed = 100;
+                _animator.Speed = 1;
                 if (moveDir.X < 0)
                 {
-                    _velocity.X = -MoveSpeed;
                     _animator.FlipX = true;
                     animation = "john.walk";
                     if(_runInput.IsDown)
@@ -65,10 +66,10 @@ namespace game
                         MoveSpeed = 400;
                         _animator.Speed = 1.5f;
                     }
+                    _velocity.X = -MoveSpeed;
                 }
                 else if (moveDir.X > 0)
                 {
-                    _velocity.X = MoveSpeed;
                     _animator.FlipX = false;
                     animation = "john.walk";
                     if (_runInput.IsDown)
@@ -77,6 +78,7 @@ namespace game
                         MoveSpeed = 400;
                         _animator.Speed = 1.5f;
                     }
+                    _velocity.X = MoveSpeed;
                 }
             }
 
