@@ -1,60 +1,31 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Nez;
 using Nez.Sprites;
-using Nez.Textures;
 
 namespace game
 {
     public class Hero : Component, IUpdatable
     {
-        public float Gravity { get; set; } = 1000;
+        public float Gravity { get; set; } = 500;
         public float JumpHeight { get; set; } = 0.2f;
-        public float MoveSpeed { get; set; } = 150;
+        public float MoveSpeed { get; set; } = 100;
 
         private SpriteAnimator _animator;
         private BoxCollider _boxCollider;
         private Mover _mover;
         private Vector2 _velocity;
-        private VirtualButton _jumpInput;
         private VirtualIntegerAxis _xAxisInput;
 
         public override void OnAddedToEntity()
         {
-            _boxCollider = Entity.GetComponent<BoxCollider>();
-            _mover = Entity.GetComponent<Mover>();
-            _animator = Entity.AddComponent<SpriteAnimator>();
+            SpriteAtlas heroAtlas = Entity.Scene.Content.LoadSpriteAtlas("Content/animations.atlas");
 
-            SetupAnimation();
+            _boxCollider = Entity.AddComponent<BoxCollider>();
+            _mover = Entity.AddComponent<Mover>();
+            _animator = Entity.AddComponent<SpriteAnimator>().AddAnimationsFromAtlas(heroAtlas);
+
             SetupInput();
-        }
-
-        private void SetupAnimation()
-        {
-            Texture2D heroTexture = Entity.Scene.Content.Load<Texture2D>("Sprites/RX_ANIM_global");
-            var heroSprites = Sprite.SpritesFromAtlas(heroTexture, 64, 64);
-
-            _animator.AddAnimation(
-                "Idle",
-                5f,
-                heroSprites[0],
-                heroSprites[1],
-                heroSprites[2],
-                heroSprites[3],
-                heroSprites[4],
-                heroSprites[5]
-            );
-            _animator.AddAnimation(
-                "Walking",
-                5f,
-                heroSprites[0 + 6],
-                heroSprites[1 + 6],
-                heroSprites[2 + 6],
-                heroSprites[3 + 6],
-                heroSprites[4 + 6],
-                heroSprites[5 + 6]
-            );
         }
 
         private void SetupInput()
@@ -70,14 +41,13 @@ namespace game
             CollisionResult collisionResult;
             Vector2 deltaMovement = new Vector2(0);
             Vector2 moveDir = new Vector2(_xAxisInput.Value, 0);
-            string animation = "Idle";
+            string animation = "john.walk";
 
-            _velocity.Y += 200 * Time.DeltaTime;
+            _velocity.Y += 50 * Time.DeltaTime;
             deltaMovement.Y = _velocity.Y;
 
             if (_boxCollider.CollidesWithAny(ref deltaMovement, out collisionResult))
             {
-                Debug.Log(deltaMovement);
                 // only allow horizontal movement and jumping if the player is on the ground
                 if (collisionResult.Normal.Y < 0)
                 {
@@ -87,13 +57,13 @@ namespace game
                     {
                         _velocity.X = -MoveSpeed;
                         _animator.FlipX = true;
-                        animation = "Walking";
+                        animation = "john.walk";
                     }
                     else if (moveDir.X > 0)
                     {
                         _velocity.X = MoveSpeed;
                         _animator.FlipX = false;
-                        animation = "Walking";
+                        animation = "john.walk";
                     }
                 }
             }
