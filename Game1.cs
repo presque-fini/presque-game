@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Media;
 using Nez;
 using Nez.DeferredLighting;
 using Nez.Sprites;
-using Nez.Textures;
 
 namespace game
 {
@@ -15,7 +14,7 @@ namespace game
         protected override void Initialize()
         {
             base.Initialize();
-            //DebugRenderEnabled = true;
+            DebugRenderEnabled = true;
 
             const int LIGHT_LAYER = 1;
             const int FOREGROUND_LAYER = 5;

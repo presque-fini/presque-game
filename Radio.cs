@@ -7,7 +7,6 @@ namespace game
 {
     internal class Radio : Component, IUpdatable
     {
-
         private SoundEffectInstance soundEffectInstance;
         private AudioListener listener;
         private AudioEmitter emitter;
