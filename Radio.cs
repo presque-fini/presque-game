@@ -7,9 +7,16 @@ namespace game
 {
     internal class Radio : Component, IUpdatable
     {
+
         private SoundEffectInstance soundEffectInstance;
         private AudioListener listener;
         private AudioEmitter emitter;
+        private readonly int renderLayer;
+
+        public Radio(int renderLayer)
+        {
+            this.renderLayer = renderLayer;
+        }
 
         public override void OnAddedToEntity()
         {
@@ -17,7 +24,7 @@ namespace game
             emitter = new AudioEmitter();
 
             var radioTexture = Entity.Scene.Content.LoadTexture("Assets/Radio-front");
-            Entity.AddComponent(new SpriteRenderer(radioTexture));
+            Entity.AddComponent(new SpriteRenderer(radioTexture)).SetRenderLayer(renderLayer);
             Entity.SetPosition(new Vector2(400, 600));
             Entity.SetScale(1.5f);
 

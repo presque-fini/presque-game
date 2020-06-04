@@ -19,6 +19,12 @@ namespace game
         private VirtualButton _runInput;
         private int frameCount = 0;
         private string animation = "john.idle";
+        private readonly int renderLayer;
+
+        public Hero(int renderLayer)
+        {
+            this.renderLayer = renderLayer;
+        }
 
         public override void OnAddedToEntity()
         {
@@ -27,7 +33,7 @@ namespace game
             _boxCollider = Entity.AddComponent<BoxCollider>();
             _mover = Entity.AddComponent<Mover>();
             _animator = Entity.AddComponent<SpriteAnimator>().AddAnimationsFromAtlas(heroAtlas);
-            _animator.RenderLayer = 0;
+            _animator.RenderLayer = renderLayer;
 
             SetupInput();
         }
