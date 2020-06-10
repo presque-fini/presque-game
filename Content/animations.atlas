@@ -22,799 +22,733 @@ RX_ANIM_run_3
 Character_7x11
 	1361,0,350,407
 	0.5,0.5
-0001
+john.footing.0001
 	770,721,128,128
 	0.5,0.5
-0002
+john.footing.0002
 	770,850,128,128
 	0.5,0.5
-0003
+john.footing.0003
 	899,721,128,128
 	0.5,0.5
-0004
+john.footing.0004
 	1712,0,128,128
 	0.5,0.5
-0005
+john.footing.0005
 	1028,721,128,128
 	0.5,0.5
-0006
+john.footing.0006
 	899,850,128,128
 	0.5,0.5
-0007
+john.footing.0007
 	1361,408,128,128
 	0.5,0.5
-0008
+john.footing.0008
 	1712,129,128,128
 	0.5,0.5
-0009
+john.footing.0009
 	1841,0,128,128
 	0.5,0.5
-0010
+john.footing.0010
 	1028,850,128,128
 	0.5,0.5
-0011
+john.footing.0011
 	1157,721,128,128
 	0.5,0.5
-0012
+john.footing.0012
 	1361,537,128,128
 	0.5,0.5
-0013
+john.footing.0013
 	1490,408,128,128
 	0.5,0.5
-0014
+john.footing.0014
 	1841,129,128,128
 	0.5,0.5
-0015
+john.footing.0015
 	1712,258,128,128
 	0.5,0.5
-0016
+john.footing.0016
 	1157,850,128,128
 	0.5,0.5
-0017
+john.footing.0017
 	1286,721,128,128
 	0.5,0.5
-0018
+john.footing.0018
 	1490,537,128,128
 	0.5,0.5
-0019
+john.footing.0019
 	1619,408,128,128
 	0.5,0.5
-0020
+john.footing.0020
 	1841,258,128,128
 	0.5,0.5
-0021
+john.footing.0021
 	1415,666,128,128
 	0.5,0.5
-0022
+john.footing.0022
 	1286,850,128,128
 	0.5,0.5
-john.footing.0001
+john.idle.alternate.0001
 	1748,387,128,128
 	0.5,0.5
-john.footing.0002
+john.idle.alternate.0002
 	1619,537,128,128
 	0.5,0.5
-john.footing.0003
+john.idle.alternate.0003
 	1415,795,128,128
 	0.5,0.5
-john.footing.0004
+john.idle.alternate.0004
 	1544,666,128,128
 	0.5,0.5
-john.footing.0005
+john.idle.alternate.0005
 	1748,516,128,128
 	0.5,0.5
-john.footing.0006
+john.idle.alternate.0006
 	1877,387,128,128
 	0.5,0.5
-john.footing.0007
+john.idle.alternate.0007
 	1544,795,128,128
 	0.5,0.5
-john.footing.0008
+john.idle.alternate.0008
 	1673,666,128,128
 	0.5,0.5
-john.footing.0009
+john.idle.alternate.0009
 	1877,516,128,128
 	0.5,0.5
-john.footing.0010
+john.idle.alternate.0010
 	1673,795,128,128
 	0.5,0.5
-john.footing.0011
+john.idle.alternate.0011
 	1802,645,128,128
 	0.5,0.5
-john.footing.0012
+john.idle.alternate.0012
 	1802,774,128,128
 	0.5,0.5
-john.footing.0013
+john.idle.alternate.0013
 	0,980,128,128
 	0.5,0.5
-john.footing.0014
+john.idle.alternate.0014
 	0,1109,128,128
 	0.5,0.5
-john.footing.0015
+john.idle.alternate.0015
 	129,980,128,128
 	0.5,0.5
-john.footing.0016
+john.idle.alternate.0016
 	129,1109,128,128
 	0.5,0.5
-john.footing.0017
+john.idle.alternate.0017
 	258,980,128,128
 	0.5,0.5
-john.footing.0018
+john.idle.alternate.0018
 	0,1238,128,128
 	0.5,0.5
-john.footing.0019
+john.idle.alternate.0019
 	258,1109,128,128
 	0.5,0.5
-john.footing.0020
+john.idle.alternate.0020
 	0,1367,128,128
 	0.5,0.5
-john.footing.0021
+john.idle.alternate.0021
 	129,1238,128,128
 	0.5,0.5
-john.footing.0022
+john.idle.alternate.0022
 	387,916,128,128
 	0.5,0.5
-john.idle.alternate.0001
+john.idle.alternate.0023
 	387,1045,128,128
 	0.5,0.5
-john.idle.alternate.0002
+john.idle.alternate.0024
 	516,916,128,128
 	0.5,0.5
-john.idle.alternate.0003
+john.idle.alternate.0025
 	0,1496,128,128
 	0.5,0.5
-john.idle.alternate.0004
+john.idle.alternate.0026
 	129,1367,128,128
 	0.5,0.5
-john.idle.alternate.0005
+john.idle.alternate.0027
 	258,1238,128,128
 	0.5,0.5
-john.idle.alternate.0006
+john.idle.alternate.0028
 	387,1174,128,128
 	0.5,0.5
-john.idle.alternate.0007
+john.idle.alternate.0029
 	516,1045,128,128
 	0.5,0.5
-john.idle.alternate.0008
+john.idle.alternate.0030
 	129,1496,128,128
 	0.5,0.5
-john.idle.alternate.0009
+john.idle.alternate.0031
 	258,1367,128,128
 	0.5,0.5
-john.idle.alternate.0010
+john.idle.alternate.0032
 	0,1625,128,128
 	0.5,0.5
-john.idle.alternate.0011
+john.idle.alternate.0033
 	387,1303,128,128
 	0.5,0.5
-john.idle.alternate.0012
+john.idle.alternate.0034
 	645,979,128,128
 	0.5,0.5
-john.idle.alternate.0013
+john.idle.alternate.0035
 	516,1174,128,128
 	0.5,0.5
-john.idle.alternate.0014
+john.idle.alternate.0036
 	645,1108,128,128
 	0.5,0.5
-john.idle.alternate.0015
+john.idle.alternate.0037
 	774,979,128,128
 	0.5,0.5
-john.idle.alternate.0016
+john.idle.alternate.0038
 	129,1625,128,128
 	0.5,0.5
-john.idle.alternate.0017
+john.idle.alternate.0039
 	258,1496,128,128
 	0.5,0.5
-john.idle.alternate.0018
+john.idle.alternate.0040
 	516,1303,128,128
 	0.5,0.5
-john.idle.alternate.0019
+john.idle.alternate.0041
 	387,1432,128,128
 	0.5,0.5
-john.idle.alternate.0020
+john.idle.alternate.0042
 	645,1237,128,128
 	0.5,0.5
-john.idle.alternate.0021
+john.idle.alternate.0043
 	903,979,128,128
 	0.5,0.5
-john.idle.alternate.0022
+john.idle.alternate.0044
 	774,1108,128,128
 	0.5,0.5
-john.idle.alternate.0023
+john.idle.alternate.0045
 	258,1625,128,128
 	0.5,0.5
-john.idle.alternate.0024
+john.idle.alternate.0046
 	387,1561,128,128
 	0.5,0.5
-john.idle.alternate.0025
+john.idle.alternate.0047
 	516,1432,128,128
 	0.5,0.5
-john.idle.alternate.0026
+john.idle.alternate.0048
 	774,1237,128,128
 	0.5,0.5
-john.idle.alternate.0027
+john.idle.alternate.0049
 	903,1108,128,128
 	0.5,0.5
-john.idle.alternate.0028
+john.idle.alternate.0050
 	1032,979,128,128
 	0.5,0.5
-john.idle.alternate.0029
+john.idle.alternate.0051
 	645,1366,128,128
 	0.5,0.5
-john.idle.alternate.0030
+john.idle.alternate.0052
 	516,1561,128,128
 	0.5,0.5
-john.idle.alternate.0031
+john.idle.alternate.0053
 	903,1237,128,128
 	0.5,0.5
-john.idle.alternate.0032
+john.idle.alternate.0054
 	1032,1108,128,128
 	0.5,0.5
-john.idle.alternate.0033
+john.idle.alternate.0055
 	774,1366,128,128
 	0.5,0.5
-john.idle.alternate.0034
+john.idle.alternate.0056
 	645,1495,128,128
 	0.5,0.5
-john.idle.alternate.0035
+john.idle.alternate.0057
 	1161,979,128,128
 	0.5,0.5
-john.idle.alternate.0036
+john.idle.alternate.0058
 	774,1495,128,128
 	0.5,0.5
-john.idle.alternate.0037
+john.idle.alternate.0059
 	645,1624,128,128
 	0.5,0.5
-john.idle.alternate.0038
+john.idle.alternate.0060
 	1290,979,128,128
 	0.5,0.5
-john.idle.alternate.0039
+john.idle.alternate.0061
 	1161,1108,128,128
 	0.5,0.5
-john.idle.alternate.0040
+john.idle.alternate.0062
 	903,1366,128,128
 	0.5,0.5
-john.idle.alternate.0041
+john.idle.alternate.0063
 	1032,1237,128,128
 	0.5,0.5
-john.idle.alternate.0042
+john.idle.alternate.0064
 	1419,924,128,128
 	0.5,0.5
-john.idle.alternate.0043
+john.idle.alternate.0065
 	1290,1108,128,128
 	0.5,0.5
-john.idle.alternate.0044
+john.idle.alternate.0066
 	1161,1237,128,128
 	0.5,0.5
-john.idle.alternate.0045
+john.idle.alternate.0067
 	1032,1366,128,128
 	0.5,0.5
-john.idle.alternate.0046
+john.idle.alternate.0068
 	903,1495,128,128
 	0.5,0.5
-john.idle.alternate.0047
+john.idle.alternate.0069
 	774,1624,128,128
 	0.5,0.5
-john.idle.alternate.0048
+john.idle.alternate.0070
 	1419,1053,128,128
 	0.5,0.5
-john.idle.alternate.0049
+john.idle.alternate.0071
 	1548,924,128,128
 	0.5,0.5
-john.idle.alternate.0050
+john.idle.alternate.0072
 	903,1624,128,128
 	0.5,0.5
-john.idle.alternate.0051
+john.idle.0001
 	1290,1237,128,128
 	0.5,0.5
-john.idle.alternate.0052
+john.idle.0002
 	1161,1366,128,128
 	0.5,0.5
-john.idle.alternate.0053
+john.idle.0003
 	1032,1495,128,128
 	0.5,0.5
-john.idle.alternate.0054
+john.idle.0004
 	1677,924,128,128
 	0.5,0.5
-john.idle.alternate.0055
+john.idle.0005
 	1548,1053,128,128
 	0.5,0.5
-john.idle.alternate.0056
+john.idle.0006
 	1419,1182,128,128
 	0.5,0.5
-john.idle.alternate.0057
+john.idle.0007
 	1161,1495,128,128
 	0.5,0.5
-john.idle.alternate.0058
+john.idle.0008
 	1032,1624,128,128
 	0.5,0.5
-john.idle.alternate.0059
+john.idle.0009
 	1290,1366,128,128
 	0.5,0.5
-john.idle.alternate.0060
+john.idle.0010
 	1548,1182,128,128
 	0.5,0.5
-john.idle.alternate.0061
+john.idle.0011
 	1419,1311,128,128
 	0.5,0.5
-john.idle.alternate.0062
+john.idle.0012
 	1677,1053,128,128
 	0.5,0.5
-john.idle.alternate.0063
+john.idle.0013
 	1806,903,128,128
 	0.5,0.5
-john.idle.alternate.0064
+john.idle.0014
 	1290,1495,128,128
 	0.5,0.5
-john.idle.alternate.0065
+john.idle.0015
 	1161,1624,128,128
 	0.5,0.5
-john.idle.alternate.0066
+john.idle.0016
 	1806,1032,128,128
 	0.5,0.5
-john.idle.alternate.0067
+john.idle.0017
 	1677,1182,128,128
 	0.5,0.5
-john.idle.alternate.0068
+john.idle.0018
 	1548,1311,128,128
 	0.5,0.5
-john.idle.alternate.0069
+john.idle.0019
 	1419,1440,128,128
 	0.5,0.5
-john.idle.alternate.0070
+john.idle.0020
 	1290,1624,128,128
 	0.5,0.5
-john.idle.alternate.0071
+john.idle.0021
 	1806,1161,128,128
 	0.5,0.5
-john.idle.alternate.0072
+john.idle.0022
 	1548,1440,128,128
 	0.5,0.5
-john.idle.0001
+john.idle.0023
 	1419,1569,128,128
 	0.5,0.5
-john.idle.0002
+john.idle.0024
 	1677,1311,128,128
 	0.5,0.5
-john.idle.0003
+john.idle.0025
 	1806,1290,128,128
 	0.5,0.5
-john.idle.0004
+john.idle.0026
 	1677,1440,128,128
 	0.5,0.5
-john.idle.0005
+john.idle.0027
 	1548,1569,128,128
 	0.5,0.5
-john.idle.0006
+john.idle.0028
 	1806,1419,128,128
 	0.5,0.5
-john.idle.0007
+john.idle.0029
 	1677,1569,128,128
 	0.5,0.5
-john.idle.0008
+john.idle.0030
 	1806,1548,128,128
 	0.5,0.5
-john.idle.0009
+john.idle.0031
 	1970,0,128,128
 	0.5,0.5
-john.idle.0010
+john.idle.0032
 	1970,129,128,128
 	0.5,0.5
-john.idle.0011
+john.idle.0033
 	2099,0,128,128
 	0.5,0.5
-john.idle.0012
+john.idle.0034
 	2228,0,128,128
 	0.5,0.5
-john.idle.0013
+john.idle.0035
 	2099,129,128,128
 	0.5,0.5
-john.idle.0014
+john.idle.0036
 	1970,258,128,128
 	0.5,0.5
-john.idle.0015
+john.idle.0037
 	2228,129,128,128
 	0.5,0.5
-john.idle.0016
+john.idle.0038
 	2099,258,128,128
 	0.5,0.5
-john.idle.0017
+john.idle.0039
 	2357,0,128,128
 	0.5,0.5
-john.idle.0018
+john.idle.0040
 	2006,387,128,128
 	0.5,0.5
-john.idle.0019
+john.idle.0041
 	2228,258,128,128
 	0.5,0.5
-john.idle.0020
+john.idle.0042
 	2486,0,128,128
 	0.5,0.5
-john.idle.0021
+john.idle.0043
 	2357,129,128,128
 	0.5,0.5
-john.idle.0022
+john.idle.0044
 	2135,387,128,128
 	0.5,0.5
-john.idle.0023
+john.idle.0045
 	2006,516,128,128
 	0.5,0.5
-john.idle.0024
+john.idle.0046
 	1931,645,128,128
 	0.5,0.5
-john.idle.0025
+john.idle.0047
 	2486,129,128,128
 	0.5,0.5
-john.idle.0026
+john.idle.0048
 	2357,258,128,128
 	0.5,0.5
-john.idle.0027
+john.idle.0049
 	2615,0,128,128
 	0.5,0.5
-john.idle.0028
+john.idle.0050
 	2135,516,128,128
 	0.5,0.5
-john.idle.0029
+john.idle.0051
 	2264,387,128,128
 	0.5,0.5
-john.idle.0030
+john.idle.0052
 	2060,645,128,128
 	0.5,0.5
-john.idle.0031
+john.idle.0053
 	1931,774,128,128
 	0.5,0.5
-john.idle.0032
+john.idle.0054
 	2744,0,128,128
 	0.5,0.5
-john.idle.0033
+john.idle.0055
 	2615,129,128,128
 	0.5,0.5
-john.idle.0034
+john.idle.0056
 	2486,258,128,128
 	0.5,0.5
-john.idle.0035
+john.idle.0057
 	2393,387,128,128
 	0.5,0.5
-john.idle.0036
+john.idle.0058
 	2264,516,128,128
 	0.5,0.5
-john.idle.0037
+john.idle.0059
 	2060,774,128,128
 	0.5,0.5
-john.idle.0038
+john.idle.0060
 	2189,645,128,128
 	0.5,0.5
-john.idle.0039
+john.idle.0061
 	1935,903,128,128
 	0.5,0.5
-john.idle.0040
+john.idle.0062
 	2744,129,128,128
 	0.5,0.5
-john.idle.0041
+john.idle.0063
 	2615,258,128,128
 	0.5,0.5
-john.idle.0042
+john.idle.0064
 	2873,0,128,128
 	0.5,0.5
-john.idle.0043
+john.idle.0065
 	2393,516,128,128
 	0.5,0.5
-john.idle.0044
+john.idle.0066
 	2522,387,128,128
 	0.5,0.5
-john.idle.0045
+john.idle.0067
 	2318,645,128,128
 	0.5,0.5
-john.idle.0046
+john.idle.0068
 	2189,774,128,128
 	0.5,0.5
-john.idle.0047
+john.idle.0069
 	1935,1032,128,128
 	0.5,0.5
-john.idle.0048
+john.idle.0070
 	2064,903,128,128
 	0.5,0.5
-john.idle.0049
+john.idle.0071
 	2873,129,128,128
 	0.5,0.5
-john.idle.0050
+john.idle.0072
 	3002,0,128,128
 	0.5,0.5
-john.idle.0051
+john.run.0001
 	2744,258,128,128
 	0.5,0.5
-john.idle.0052
+john.run.0002
 	2651,387,128,128
 	0.5,0.5
-john.idle.0053
+john.run.0003
 	2522,516,128,128
 	0.5,0.5
-john.idle.0054
+john.run.0004
 	2318,774,128,128
 	0.5,0.5
-john.idle.0055
+john.run.0005
 	2447,645,128,128
 	0.5,0.5
-john.idle.0056
+john.run.0006
 	2064,1032,128,128
 	0.5,0.5
-john.idle.0057
+john.run.0007
 	1935,1161,128,128
 	0.5,0.5
-john.idle.0058
+john.run.0008
 	2193,903,128,128
 	0.5,0.5
-john.idle.0059
-	3131,0,128,128
-	0.5,0.5
-john.idle.0060
+john.run.0009
 	3002,129,128,128
 	0.5,0.5
-john.idle.0061
+john.run.0010
 	2873,258,128,128
 	0.5,0.5
-john.idle.0062
+john.run.0011
 	2651,516,128,128
 	0.5,0.5
-john.idle.0063
+john.run.0012
 	2780,387,128,128
 	0.5,0.5
-john.idle.0064
+john.run.0013
 	2447,774,128,128
 	0.5,0.5
-john.idle.0065
+john.run.0014
 	2576,645,128,128
 	0.5,0.5
-john.idle.0066
+john.run.0015
 	1935,1290,128,128
 	0.5,0.5
-john.idle.0067
+john.run.0016
 	2322,903,128,128
 	0.5,0.5
-john.idle.0068
+john.run.0017
 	2193,1032,128,128
 	0.5,0.5
-john.idle.0069
+john.run.0018
 	2064,1161,128,128
 	0.5,0.5
-john.idle.0070
-	3131,129,128,128
-	0.5,0.5
-john.idle.0071
+john.run.0019
 	3002,258,128,128
 	0.5,0.5
-john.idle.0072
-	3260,0,128,128
-	0.5,0.5
-john.run.0001
+john.run.0020
 	2909,387,128,128
 	0.5,0.5
-john.run.0002
+john.run.0021
 	2780,516,128,128
 	0.5,0.5
-john.run.0003
+john.run.0022
 	2705,645,128,128
 	0.5,0.5
-john.run.0004
+john.walk.alternate.0001
 	2576,774,128,128
 	0.5,0.5
-john.run.0005
+john.walk.alternate.0002
 	1935,1419,128,128
 	0.5,0.5
-john.run.0006
+john.walk.alternate.0003
 	2451,903,128,128
 	0.5,0.5
-john.run.0007
+john.walk.alternate.0004
 	2322,1032,128,128
 	0.5,0.5
-john.run.0008
+john.walk.alternate.0005
 	2193,1161,128,128
 	0.5,0.5
-john.run.0009
+john.walk.alternate.0006
 	2064,1290,128,128
 	0.5,0.5
-john.run.0010
-	3260,129,128,128
-	0.5,0.5
-john.run.0011
-	3131,258,128,128
-	0.5,0.5
-john.run.0012
+john.walk.alternate.0007
 	2909,516,128,128
 	0.5,0.5
-john.run.0013
-	3038,387,128,128
-	0.5,0.5
-john.run.0014
+john.walk.alternate.0008
 	2705,774,128,128
 	0.5,0.5
-john.run.0015
+john.walk.alternate.0009
 	2834,645,128,128
 	0.5,0.5
-john.run.0016
+john.walk.alternate.0010
 	2322,1161,128,128
 	0.5,0.5
-john.run.0017
+john.walk.alternate.0011
 	2193,1290,128,128
 	0.5,0.5
-john.run.0018
+john.walk.alternate.0012
 	2064,1419,128,128
 	0.5,0.5
-john.run.0019
+john.walk.alternate.0013
 	2580,903,128,128
 	0.5,0.5
-john.run.0020
+john.walk.alternate.0014
 	2451,1032,128,128
 	0.5,0.5
-john.run.0021
+john.walk.alternate.0015
 	1935,1548,128,128
 	0.5,0.5
-john.run.0022
-	3260,258,128,128
-	0.5,0.5
-john.walk.alternate.0001
-	3167,387,128,128
-	0.5,0.5
-john.walk.alternate.0002
-	3038,516,128,128
-	0.5,0.5
-john.walk.alternate.0003
+john.walk.alternate.0016
 	2963,645,128,128
 	0.5,0.5
-john.walk.alternate.0004
+john.walk.alternate.0017
 	2834,774,128,128
 	0.5,0.5
-john.walk.alternate.0005
+john.walk.alternate.0018
 	2580,1032,128,128
 	0.5,0.5
-john.walk.alternate.0006
+john.walk.alternate.0019
 	2451,1161,128,128
 	0.5,0.5
-john.walk.alternate.0007
+john.walk.alternate.0020
 	2064,1548,128,128
 	0.5,0.5
-john.walk.alternate.0008
+john.walk.alternate.0021
 	2193,1419,128,128
 	0.5,0.5
-john.walk.alternate.0009
+john.walk.alternate.0022
 	2709,903,128,128
 	0.5,0.5
-john.walk.alternate.0010
+john.walk.alternate.0023
 	2322,1290,128,128
 	0.5,0.5
-john.walk.alternate.0011
-	3167,516,128,128
-	0.5,0.5
-john.walk.alternate.0012
+john.walk.alternate.0024
 	2963,774,128,128
 	0.5,0.5
-john.walk.alternate.0013
-	3092,645,128,128
-	0.5,0.5
-john.walk.alternate.0014
-	2838,903,128,128
-	0.5,0.5
-john.walk.alternate.0015
-	2709,1032,128,128
-	0.5,0.5
-john.walk.alternate.0016
-	2451,1290,128,128
-	0.5,0.5
-john.walk.alternate.0017
-	2322,1419,128,128
-	0.5,0.5
-john.walk.alternate.0018
+john.walk.0001
 	2193,1548,128,128
 	0.5,0.5
-john.walk.alternate.0019
-	2580,1161,128,128
-	0.5,0.5
-john.walk.alternate.0020
-	3221,645,128,128
-	0.5,0.5
-john.walk.alternate.0021
-	3092,774,128,128
-	0.5,0.5
-john.walk.alternate.0022
-	2322,1548,128,128
-	0.5,0.5
-john.walk.alternate.0023
-	2709,1161,128,128
-	0.5,0.5
-john.walk.alternate.0024
-	2580,1290,128,128
-	0.5,0.5
-john.walk.0001
-	2451,1419,128,128
-	0.5,0.5
 john.walk.0002
-	2838,1032,128,128
+	2838,903,128,128
 	0.5,0.5
 john.walk.0003
-	2967,903,128,128
+	2709,1032,128,128
 	0.5,0.5
 john.walk.0004
-	3221,774,128,128
+	2451,1290,128,128
 	0.5,0.5
 john.walk.0005
-	2967,1032,128,128
+	2322,1419,128,128
 	0.5,0.5
 john.walk.0006
-	2838,1161,128,128
+	2580,1161,128,128
 	0.5,0.5
 john.walk.0007
-	3096,903,128,128
+	2451,1419,128,128
 	0.5,0.5
 john.walk.0008
-	2709,1290,128,128
+	2322,1548,128,128
 	0.5,0.5
 john.walk.0009
-	2580,1419,128,128
+	2709,1161,128,128
 	0.5,0.5
 john.walk.0010
-	2451,1548,128,128
+	2580,1290,128,128
 	0.5,0.5
 john.walk.0011
-	2709,1419,128,128
+	2838,1032,128,128
 	0.5,0.5
 john.walk.0012
-	2580,1548,128,128
+	2967,903,128,128
 	0.5,0.5
 john.walk.0013
-	3225,903,128,128
+	2967,1032,128,128
 	0.5,0.5
 john.walk.0014
-	3096,1032,128,128
+	2838,1161,128,128
 	0.5,0.5
 john.walk.0015
-	2838,1290,128,128
+	2709,1290,128,128
 	0.5,0.5
 john.walk.0016
-	2967,1161,128,128
+	2580,1419,128,128
 	0.5,0.5
 john.walk.0017
-	2838,1419,128,128
+	2451,1548,128,128
 	0.5,0.5
 john.walk.0018
-	3096,1161,128,128
+	2580,1548,128,128
 	0.5,0.5
 john.walk.0019
-	2967,1290,128,128
+	2838,1290,128,128
 	0.5,0.5
 john.walk.0020
-	3225,1032,128,128
+	2709,1419,128,128
 	0.5,0.5
 john.walk.0021
-	2709,1548,128,128
+	2967,1161,128,128
 	0.5,0.5
 john.walk.0022
-	2967,1419,128,128
+	2838,1419,128,128
 	0.5,0.5
 john.walk.0023
-	3225,1161,128,128
+	2709,1548,128,128
 	0.5,0.5
 john.walk.0024
-	2838,1548,128,128
+	2967,1290,128,128
 	0.5,0.5
 
 john.footing
 	24
-	8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51
+	8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29
 john.idle
 	24
-	124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195
+	102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173
 john.idle.alternate
 	24
-	52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123
+	30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101
 john.run
 	24
-	196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217
+	174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195
 john.walk
 	24
-	242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265
+	220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243
 john.walk.alternate
 	24
-	218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241
+	196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219
 rain
 	24
 	0
