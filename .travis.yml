@@ -1,8 +1,17 @@
 language: csharp
 solution: game.sln
 
+adons:
+  sonarcloud:
+    organization: "presque-fini"
+    token:
+      secure: "KjVQS8qGh0XKzAiKVpU5dD6LEWKkUxjWjB8sR7eIBtXxWivWAZHsf0nVfekGHDVxM517yzSSehzBzh/uIAqrYwwKkHqqddlbG+0Ro31vn3Ox9/RXKixRq2fWDenfoVyq1zNkXHD/3aFreZtD+DStSxggU6zPdIiu7kmsrZs8UgqWim65On03os/6ncz9hGdfWJQsgKDEvxuqax5DF7FsMskPt5nSqS4UhjWL3ktPzctMdhuCEJYQeQ9qa+yHca31FWQ3X74rJp/QQq+aSJhDRylomtZ+OjtOdJuSJiaiIXpvpsNCwDmF5BY98XHjWx2kpvymrdgWTUCR4EHy5j9tF2bfrmh5fxbMZe/fNfwci1NvXSbkCJe6WV0rWI84Qrl4eWsjBZ5M+j87apW4jP8KLm8/eyl4wlKp38s8JQiUPm/3lTUGouUpleLjfTlQyYERBMteQekO6y+WEDO08LFourxqpfSpAArO0JsF14nzAHxO9pA8x0jFuKWZa7Niu2u7yYTHYHJqgrXDa6DMXpgKwgvvvI5H0vSd6oP6beZymnAFYgWGCwlIQ24K3eUuRprMkQazj9Q/glM3/l+Ra+7UGif6NCRbyWRTlMQBmVKg3hOXO95H7BoeCz9yiACdu09K3ikeR+wODt/MLQZfWmdApdAdibdZioISX6a//z5OLg8="
+
 before_install:
   - git clone https://github.com/prime31/Nez.git ../nez
   - wget https://github.com/MonoGame/MonoGame/releases/download/v3.7.1/monogame-sdk.run
   - chmod +x monogame-sdk.run
   - yes | sudo ./monogame-sdk.run
+
+script:
+  - sonar-scanner
