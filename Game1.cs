@@ -8,7 +8,7 @@ namespace game
 {
     public class Game1 : Core
     {
-        public Game1() : base(1280, 720, false, true, "Test game")
+        public Game1() : base()
         { }
 
         protected override void Initialize()
