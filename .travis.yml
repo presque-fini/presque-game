@@ -1,7 +1,7 @@
 language: csharp
 solution: game.sln
 
-adons:
+addons:
   sonarcloud:
     organization: "presque-fini"
     token:
