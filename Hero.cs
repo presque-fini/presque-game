@@ -85,7 +85,7 @@ namespace game
                     animation = "john.walk";
                     if (runInput.IsDown)
                     {
-                        animation = "john.run";
+                        animation = "john.footing";
                         MoveSpeed = 400;
                         animator.Speed = 1.5f;
                     }
@@ -97,7 +97,7 @@ namespace game
                     animation = "john.walk";
                     if (runInput.IsDown)
                     {
-                        animation = "john.run";
+                        animation = "john.footing";
                         MoveSpeed = 400;
                         animator.Speed = 1.5f;
                     }
