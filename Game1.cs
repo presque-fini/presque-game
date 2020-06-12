@@ -47,7 +47,7 @@ namespace game
 
             // Player setup
             var hero = scene.CreateEntity("hero");
-            hero.AddComponent(new Hero(PLAYER_LAYER));
+            hero.AddComponent(new Hero(PLAYER_LAYER, LIGHT_LAYER));
             hero.SetPosition(new Vector2(Screen.Center.X, 600));
 
             // Camera
@@ -72,11 +72,11 @@ namespace game
         private static void SetupLight(int LIGHT_LAYER, Scene scene)
         {
             var light = new PointLight(Color.White);
-            light.SetIntensity(5f);
+            light.SetIntensity(2f);
             light.SetRadius(600f);
             var lightEntity = scene.CreateEntity("light");
             lightEntity.AddComponent(light).SetRenderLayer(LIGHT_LAYER);
-            lightEntity.SetPosition(new Vector2(Screen.Center.X, 600));
+            lightEntity.SetPosition(new Vector2(Screen.Center.X, 250));
         }
     }
 }

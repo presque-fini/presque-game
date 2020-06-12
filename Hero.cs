@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Nez;
+using Nez.DeferredLighting;
 using Nez.Sprites;
 
 namespace game
@@ -13,26 +14,42 @@ namespace game
 
         private SpriteAnimator animator;
         private BoxCollider collider;
+        private SpotLight light;
         private Mover mover;
         private Vector2 velocity;
         private VirtualIntegerAxis xAxisInput;
         private VirtualButton runInput;
         private readonly int renderLayer;
+        private readonly int lightLayer;
         private string animation;
+        private Vector2 lightRightOffset;
+        private Vector2 lightLeftOffset;
 
-        public Hero(int renderLayer)
+        public Hero(int renderLayer, int lightLayer)
         {
             this.renderLayer = renderLayer;
+            this.lightLayer = lightLayer;
         }
 
         public override void OnAddedToEntity()
         {
+            lightRightOffset = new Vector2(-6f, -35f);
+            lightLeftOffset = new Vector2(6f, -35f);
+
             SpriteAtlas heroAtlas = Entity.Scene.Content.LoadSpriteAtlas("Content/animations.atlas");
 
             collider = Entity.AddComponent<BoxCollider>();
             mover = Entity.AddComponent<Mover>();
             animator = Entity.AddComponent<SpriteAnimator>().AddAnimationsFromAtlas(heroAtlas);
             animator.RenderLayer = renderLayer;
+
+            //Light WIP
+            light = new SpotLight(Color.White);
+            var lightEntity = Entity.AddComponent(light).SetRenderLayer(lightLayer);
+            light.SetLocalOffset(lightRightOffset);
+            light.SetIntensity(5f);
+            light.SetRadius(600f);
+            light.SetConeAngle(45);
 
             animation = "john.idle";
 
@@ -81,7 +98,9 @@ namespace game
                 velocity = Vector2.Zero;
                 if (moveDir.X < 0)
                 {
-                    animator.FlipX = true;
+                    animator.FlipY = true;
+                    light.Transform.SetRotationDegrees(180);
+                    light.SetLocalOffset(lightRightOffset);
                     animation = "john.walk";
                     if (runInput.IsDown)
                     {
@@ -93,7 +112,9 @@ namespace game
                 }
                 else if (moveDir.X > 0)
                 {
-                    animator.FlipX = false;
+                    animator.FlipY = false;
+                    light.Transform.SetRotationDegrees(0);
+                    light.SetLocalOffset(lightLeftOffset);
                     animation = "john.walk";
                     if (runInput.IsDown)
                     {
