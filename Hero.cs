@@ -8,28 +8,29 @@ namespace game
 {
     public class Hero : Component, IUpdatable
     {
-        public float Gravity { get; set; } = 500;
-        public float JumpHeight { get; set; } = 0.2f;
-        public float MoveSpeed { get; set; } = 100;
-
+        private readonly int lightLayer;
+        private readonly int renderLayer;
+        private string animation;
         private SpriteAnimator animator;
         private BoxCollider collider;
-        private SpotLight light;
+        private SpotLight flashLight;
+        private VirtualButton inputFlashlight;
+        private VirtualButton inputJump;
+        private VirtualIntegerAxis inputXAxis;
+        private Vector2 lightLeftOffset;
+        private Vector2 lightRightOffset;
         private Mover mover;
         private Vector2 velocity;
-        private VirtualIntegerAxis xAxisInput;
-        private VirtualButton runInput;
-        private readonly int renderLayer;
-        private readonly int lightLayer;
-        private string animation;
-        private Vector2 lightRightOffset;
-        private Vector2 lightLeftOffset;
 
         public Hero(int renderLayer, int lightLayer)
         {
             this.renderLayer = renderLayer;
             this.lightLayer = lightLayer;
         }
+
+        public float Gravity { get; set; } = 500;
+        public float JumpHeight { get; set; } = 0.2f;
+        public float MoveSpeed { get; set; } = 100;
 
         public override void OnAddedToEntity()
         {
@@ -43,40 +44,56 @@ namespace game
             animator = Entity.AddComponent<SpriteAnimator>().AddAnimationsFromAtlas(heroAtlas);
             animator.RenderLayer = renderLayer;
 
-            //Light WIP
-            light = new SpotLight(Color.White);
-            var lightEntity = Entity.AddComponent(light).SetRenderLayer(lightLayer);
-            light.SetLocalOffset(lightRightOffset);
-            light.SetIntensity(5f);
-            light.SetRadius(600f);
-            light.SetConeAngle(45);
-
             animation = "john.idle";
 
             SetupInput();
+            SetupFlashLight();
+        }
+
+        private void SetupFlashLight()
+        {
+            flashLight = new SpotLight(Color.White);
+            flashLight.SetConeAngle(90);
+            flashLight.SetIntensity(2f);
+            flashLight.SetLocalOffset(lightRightOffset);
+            flashLight.SetRenderLayer(lightLayer);
+            Entity.AddComponent(flashLight);
         }
 
         private void SetupInput()
         {
-            xAxisInput = new VirtualIntegerAxis();
-            xAxisInput.Nodes.Add(new VirtualAxis.GamePadDpadLeftRight());
-            xAxisInput.Nodes.Add(new VirtualAxis.GamePadLeftStickX());
-            xAxisInput.Nodes.Add(new VirtualAxis.KeyboardKeys(VirtualInput.OverlapBehavior.TakeNewer, Keys.Left, Keys.Right));
+            inputFlashlight = new VirtualButton();
+            inputFlashlight.Nodes.Add(new VirtualButton.KeyboardKey(Keys.T));
 
-            runInput = new VirtualButton();
-            runInput.Nodes.Add(new VirtualButton.KeyboardKey(Keys.LeftShift));
+            inputJump = new VirtualButton();
+            inputJump.Nodes.Add(new VirtualButton.KeyboardKey(Keys.LeftShift));
+
+            inputXAxis = new VirtualIntegerAxis();
+            inputXAxis.Nodes.Add(new VirtualAxis.GamePadDpadLeftRight());
+            inputXAxis.Nodes.Add(new VirtualAxis.GamePadLeftStickX());
+            inputXAxis.Nodes.Add(new VirtualAxis.KeyboardKeys(VirtualInput.OverlapBehavior.TakeNewer, Keys.Left, Keys.Right));
         }
 
         void IUpdatable.Update()
         {
             CollisionResult collisionResult;
             Vector2 deltaMovement = new Vector2(0);
-            Vector2 moveDir = new Vector2(xAxisInput.Value, 0);
+            Vector2 moveDir = new Vector2(inputXAxis.Value, 0);
 
             velocity.Y += 50 * Time.DeltaTime;
             deltaMovement.Y = velocity.Y;
             MoveSpeed = 100;
             animator.Speed = 1;
+
+            // Light toggle
+            if (flashLight.Enabled && inputFlashlight.IsPressed)
+            {
+                flashLight.SetEnabled(false);
+            }
+            else if (!flashLight.Enabled && inputFlashlight.IsPressed)
+            {
+                flashLight.SetEnabled(true);
+            }
 
             // Alternate animation setup
             if (animator.CurrentAnimationName == "john.idle" && animator.CurrentFrame == 0 && Random.Chance(10))
@@ -99,10 +116,10 @@ namespace game
                 if (moveDir.X < 0)
                 {
                     animator.FlipY = true;
-                    light.Transform.SetRotationDegrees(180);
-                    light.SetLocalOffset(lightRightOffset);
+                    flashLight.Transform.SetRotationDegrees(180);
+                    flashLight.SetLocalOffset(lightRightOffset);
                     animation = "john.walk";
-                    if (runInput.IsDown)
+                    if (inputJump.IsDown)
                     {
                         animation = "john.footing";
                         MoveSpeed = 400;
@@ -113,10 +130,10 @@ namespace game
                 else if (moveDir.X > 0)
                 {
                     animator.FlipY = false;
-                    light.Transform.SetRotationDegrees(0);
-                    light.SetLocalOffset(lightLeftOffset);
+                    flashLight.Transform.SetRotationDegrees(0);
+                    flashLight.SetLocalOffset(lightLeftOffset);
                     animation = "john.walk";
-                    if (runInput.IsDown)
+                    if (inputJump.IsDown)
                     {
                         animation = "john.footing";
                         MoveSpeed = 400;
