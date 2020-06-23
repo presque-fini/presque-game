@@ -20,6 +20,7 @@ before_install:
   - unzip ./sonar-scanner-msbuild-4.9.0.17385-net46.zip -d scanner/
   - mkdir .sonarqube
   - cp -fv SonarQube.Analysis.xml .sonarqube/
+  - chmod +x ./scanner/sonar-scanner-4.3.0.2102/bin/sonar-scanner
 
 script:
   - mono ./scanner/SonarScanner.MSBuild.exe begin -k:"presque-fini_presque-game" -o:"presque-fini" -d:sonar.login="a1422381008c23a74af7aa6288a7d4a76a381075"
