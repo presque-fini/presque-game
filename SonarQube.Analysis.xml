@@ -1,0 +1,4 @@
+<SonarQubeAnalysisProperties  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+  <Property Name="sonar.host.url">https://sonarcloud.io</Property>
+  <Property Name="sonar.login">a1422381008c23a74af7aa6288a7d4a76a381075</Property>
+</SonarQubeAnalysisProperties>
