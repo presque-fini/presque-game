@@ -18,7 +18,8 @@ before_install:
   - yes | sudo ./monogame-sdk.run
   - wget https://github.com/SonarSource/sonar-scanner-msbuild/releases/download/4.9.0.17385/sonar-scanner-msbuild-4.9.0.17385-net46.zip
   - unzip ./sonar-scanner-msbuild-4.9.0.17385-net46.zip -d scanner/
-  - cp -fv SonarQube.Analysis.xml scanner/
+  - mkdir .sonarqube
+  - cp -fv SonarQube.Analysis.xml .sonarqube/
 
 script:
   - mono ./scanner/SonarScanner.MSBuild.exe begin -k:"presque-fini_presque-game" -o:"presque fini" -d:sonar.login="a1422381008c23a74af7aa6288a7d4a76a381075" -s:"SonarQube.Analysis.xml"
