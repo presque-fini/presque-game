@@ -28,12 +28,9 @@ namespace game
 
             SetupLight(LIGHT_LAYER, scene);
 
-            // Background image setup
-            Texture2D landscape = scene.Content.LoadTexture("Scenes/background_dark_landscape");
-            Entity backgroundEntity = scene.CreateEntity("background");
-            backgroundEntity.AddComponent(new SpriteRenderer(landscape)).SetRenderLayer(BACKGROUND_LAYER);
-            backgroundEntity.SetPosition(Screen.Center);
-
+            var background = scene.CreateEntity("background");
+            background.AddComponent(new Background("Scenes/background_dark_landscape", BACKGROUND_LAYER));
+            /*
             // Foreground image setup
             SpriteAtlas atlas = scene.Content.LoadSpriteAtlas("Content/animations.atlas");
             Entity foreground = scene.CreateEntity("rain");
@@ -59,7 +56,7 @@ namespace game
 
             // Ground setup
             Entity ground = scene.CreateEntity("ground");
-            ground.AddComponent(new BoxCollider(0, Screen.Height - 10, Screen.Width, 10));
+            ground.AddComponent(new BoxCollider(0, Screen.Height - 10, Screen.Width * 2, 10));
 
             // Audio setup
             Song audioFile = scene.Content.Load<Song>("Sound/ambient.wind-thunder-rain");
