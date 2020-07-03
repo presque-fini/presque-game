@@ -4,16 +4,16 @@ using Nez.Sprites;
 
 namespace game
 {
-    internal class Background : Component, IUpdatable
+    internal class Foreground : Component, IUpdatable
     {
-        private string texturePath;
+        private string animationName;
         private int renderLayer;
         private int scale;
         private float offset;
 
-        public Background(string texturePath, int renderLayer, int scale, float offset)
+        public Foreground(string animationName, int renderLayer, int scale, float offset)
         {
-            this.texturePath = texturePath;
+            this.animationName = animationName;
             this.renderLayer = renderLayer;
             this.scale = scale;
             this.offset = offset;
@@ -21,11 +21,15 @@ namespace game
 
         public override void OnAddedToEntity()
         {
-            Texture2D texture = Entity.Scene.Content.LoadTexture(texturePath);
+            var atlas = Entity.Scene.Content.LoadSpriteAtlas("Content/animations.atlas");
+            var rain = Entity.AddComponent<SpriteAnimator>().AddAnimationsFromAtlas(atlas);
 
-            Entity.AddComponent(new SpriteRenderer(texture)).SetRenderLayer(renderLayer);
+            rain.SetRenderLayer(renderLayer);
+
             Entity.SetPosition(Screen.Center);
             Entity.SetScale(scale);
+
+            rain.Play(animationName);
         }
 
         void IUpdatable.Update()

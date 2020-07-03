@@ -1,9 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
 using Nez;
 using Nez.DeferredLighting;
-using Nez.Sprites;
 
 namespace game
 {
@@ -15,12 +13,14 @@ namespace game
         protected override void Initialize()
         {
             base.Initialize();
+            //DebugRenderEnabled = true;
 
             const int LIGHT_LAYER = 1;
             const int FOREGROUND_LAYER = 5;
             const int PLAYER_LAYER = 6;
             const int OBJECT_LAYER = 7;
             const int BACKGROUND_LAYER = 8;
+            const int MOVABLE = 1;
 
             Scene scene = Scene.CreateWithDefaultRenderer(Color.LightGoldenrodYellow);
             scene.SetDesignResolution(1280, 720, Scene.SceneResolutionPolicy.None);
@@ -29,23 +29,19 @@ namespace game
             SetupLight(LIGHT_LAYER, scene);
 
             var background = scene.CreateEntity("background");
-            background.AddComponent(new Background("Scenes/background_dark_landscape", BACKGROUND_LAYER));
-            /*
-            // Foreground image setup
-            SpriteAtlas atlas = scene.Content.LoadSpriteAtlas("Content/animations.atlas");
-            Entity foreground = scene.CreateEntity("rain");
-            SpriteAnimator rain = foreground.AddComponent<SpriteAnimator>().AddAnimationsFromAtlas(atlas);
-            rain.RenderLayer = FOREGROUND_LAYER;
-            foreground.SetPosition(Screen.Center);
-            rain.Play("rain");
+            background.AddComponent(new Background("Scenes/background_dark_landscape", BACKGROUND_LAYER, 2, 0.8f));
+
+            var foreground = scene.CreateEntity("foreground");
+            foreground.AddComponent(new Foreground("rain", FOREGROUND_LAYER, 1, 1));
 
             //Radio setup
-            Entity radio = scene.CreateEntity("radio");
-            radio.AddComponent(new Radio(BACKGROUND_LAYER));
+            var radioEntity = scene.CreateEntity("radio");
+            radioEntity.AddComponent(new Radio(BACKGROUND_LAYER));
+            radioEntity.SetTag(MOVABLE);
 
             // Player setup
             Entity hero = scene.CreateEntity("hero");
-            hero.AddComponent(new Hero(PLAYER_LAYER, LIGHT_LAYER));
+            hero.AddComponent(new Hero(PLAYER_LAYER, LIGHT_LAYER, MOVABLE));
             hero.SetPosition(new Vector2(Screen.Center.X, 600));
 
             // Camera
