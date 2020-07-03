@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "game", "game.csproj", "{355
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nez", "..\nez\Nez.Portable\Nez.csproj", "{B17682B1-1592-4220-BFED-692F60851AB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nez.Samples", "..\nez-samples\Nez.Samples\Nez.Samples.csproj", "{C680D0AE-9861-4000-AFFC-952D62A01E5C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,12 +31,6 @@ Global
 		{B17682B1-1592-4220-BFED-692F60851AB2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B17682B1-1592-4220-BFED-692F60851AB2}.Release|x86.ActiveCfg = Release|Any CPU
 		{B17682B1-1592-4220-BFED-692F60851AB2}.Release|x86.Build.0 = Release|Any CPU
-		{C680D0AE-9861-4000-AFFC-952D62A01E5C}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{C680D0AE-9861-4000-AFFC-952D62A01E5C}.Debug|x86.ActiveCfg = Debug|x86
-		{C680D0AE-9861-4000-AFFC-952D62A01E5C}.Debug|x86.Build.0 = Debug|x86
-		{C680D0AE-9861-4000-AFFC-952D62A01E5C}.Release|Any CPU.ActiveCfg = Release|x86
-		{C680D0AE-9861-4000-AFFC-952D62A01E5C}.Release|x86.ActiveCfg = Release|x86
-		{C680D0AE-9861-4000-AFFC-952D62A01E5C}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

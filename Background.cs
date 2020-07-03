@@ -21,7 +21,7 @@ namespace game
 
         public override void OnAddedToEntity()
         {
-            Texture2D texture = Entity.Scene.Content.LoadTexture(texturePath);
+            var texture = Entity.Scene.Content.LoadTexture(texturePath);
 
             Entity.AddComponent(new SpriteRenderer(texture)).SetRenderLayer(renderLayer);
             Entity.SetPosition(Screen.Center);
