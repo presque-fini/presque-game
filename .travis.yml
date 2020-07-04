@@ -1,5 +1,7 @@
 language: csharp
 solution: game.sln
+git:
+  depth: false
 
 addons:
   sonarcloud:
