@@ -9,23 +9,25 @@ namespace game
     public class Hero : Component, IUpdatable
     {
         private readonly int lightLayer;
+        private readonly int movable;
         private readonly int renderLayer;
         private string animation;
         private SpriteAnimator animator;
         private BoxCollider collider;
         private SpotLight flashLight;
         private VirtualButton inputFlashlight;
-        private VirtualButton inputJump;
+        private VirtualButton inputRun;
         private VirtualIntegerAxis inputXAxis;
         private Vector2 lightLeftOffset;
         private Vector2 lightRightOffset;
         private Mover mover;
         private Vector2 velocity;
 
-        public Hero(int renderLayer, int lightLayer)
+        public Hero(int renderLayer, int lightLayer, int movable)
         {
             this.renderLayer = renderLayer;
             this.lightLayer = lightLayer;
+            this.movable = movable;
         }
 
         public float Gravity { get; set; } = 500;
@@ -48,6 +50,8 @@ namespace game
 
             SetupInput();
             SetupFlashLight();
+
+            Debug.Log(flashLight.Entity.Position);
         }
 
         private void SetupFlashLight()
@@ -65,8 +69,8 @@ namespace game
             inputFlashlight = new VirtualButton();
             inputFlashlight.Nodes.Add(new VirtualButton.KeyboardKey(Keys.T));
 
-            inputJump = new VirtualButton();
-            inputJump.Nodes.Add(new VirtualButton.KeyboardKey(Keys.LeftShift));
+            inputRun = new VirtualButton();
+            inputRun.Nodes.Add(new VirtualButton.KeyboardKey(Keys.LeftShift));
 
             inputXAxis = new VirtualIntegerAxis();
             inputXAxis.Nodes.Add(new VirtualAxis.GamePadDpadLeftRight());
@@ -76,8 +80,14 @@ namespace game
 
         void IUpdatable.Update()
         {
+            var movableList = Entity.Scene.FindEntitiesWithTag(movable);
+            for (int i = 0; i < movableList.Count; i++)
+            {
+                //Debug.Log(movableList[i].GetComponent<Radio>().GetBounds());
+            }
+
             CollisionResult collisionResult;
-            Vector2 deltaMovement = new Vector2(0);
+            Vector2 deltaMovement = Vector2.Zero;
             Vector2 moveDir = new Vector2(inputXAxis.Value, 0);
 
             velocity.Y += 50 * Time.DeltaTime;
@@ -87,27 +97,20 @@ namespace game
 
             // Light toggle
             if (flashLight.Enabled && inputFlashlight.IsPressed)
-            {
                 flashLight.SetEnabled(false);
-            }
             else if (!flashLight.Enabled && inputFlashlight.IsPressed)
-            {
                 flashLight.SetEnabled(true);
-            }
 
             // Alternate animation setup
             if (animator.CurrentAnimationName == "john.idle" && animator.CurrentFrame == 0 && Random.Chance(10))
-            {
                 animation = "john.idle.alternate";
-            }
+            
             if (animator.CurrentAnimationName == "john.idle.alternate" && animator.CurrentFrame == 71)
-            { animation = "john.idle"; }
+                animation = "john.idle";
 
             // Recover from walk or run
             if (animator.CurrentAnimationName != "john.idle" && animator.CurrentAnimationName != "john.idle.alternate")
-            {
                 animation = "john.idle";
-            }
 
             if (collider.CollidesWithAny(ref deltaMovement, out collisionResult) && collisionResult.Normal.Y < 0)
             {
@@ -119,7 +122,7 @@ namespace game
                     flashLight.Transform.SetRotationDegrees(180);
                     flashLight.SetLocalOffset(lightRightOffset);
                     animation = "john.walk";
-                    if (inputJump.IsDown)
+                    if (inputRun.IsDown)
                     {
                         animation = "john.footing";
                         MoveSpeed = 400;
@@ -133,7 +136,7 @@ namespace game
                     flashLight.Transform.SetRotationDegrees(0);
                     flashLight.SetLocalOffset(lightLeftOffset);
                     animation = "john.walk";
-                    if (inputJump.IsDown)
+                    if (inputRun.IsDown)
                     {
                         animation = "john.footing";
                         MoveSpeed = 400;
@@ -147,9 +150,7 @@ namespace game
             deltaMovement += velocity * Time.DeltaTime;
             mover.Move(deltaMovement, out collisionResult);
             if (!animator.IsAnimationActive(animation))
-            {
                 animator.Play(animation);
-            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Graphics;
 using Nez;
 using Nez.Sprites;
 
@@ -11,6 +12,12 @@ namespace game
         private AudioListener listener;
         private AudioEmitter emitter;
         private readonly int renderLayer;
+        private Texture2D radioTexture;
+
+        public Rectangle GetBounds()
+        {
+            return new Rectangle(Entity.Position.ToPoint(), new Point(radioTexture.Width, radioTexture.Height));
+        }
 
         public Radio(int renderLayer)
         {
@@ -22,7 +29,7 @@ namespace game
             listener = new AudioListener();
             emitter = new AudioEmitter();
 
-            var radioTexture = Entity.Scene.Content.LoadTexture("Assets/Radio-front");
+            radioTexture = Entity.Scene.Content.LoadTexture("Assets/Radio-front");
             Entity.AddComponent(new SpriteRenderer(radioTexture)).SetRenderLayer(renderLayer);
             Entity.SetPosition(new Vector2(400, 600));
             Entity.SetScale(1.5f);
