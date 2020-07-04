@@ -9,8 +9,6 @@ addons:
 
 before_install:
   - git clone https://github.com/prime31/Nez.git ../nez
-
-install:
   - wget https://github.com/MonoGame/MonoGame/releases/download/v3.7.1/monogame-sdk.run
   - chmod +x monogame-sdk.run
   - yes | sudo ./monogame-sdk.run
