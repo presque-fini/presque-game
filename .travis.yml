@@ -21,7 +21,7 @@ before_install:
 jobs:
   include:
     - script:
-      - mono ./scanner/SonarScanner.MSBuild.exe begin -k:"presque-fini_presque-game" -o:"presque-fini" -d:sonar.login="a1422381008c23a74af7aa6288a7d4a76a381075" -d:sonar.sources="presque-game/"
+      - mono ./scanner/SonarScanner.MSBuild.exe begin -k:"presque-fini_presque-game" -o:"presque-fini" -d:sonar.login="a1422381008c23a74af7aa6288a7d4a76a381075" -d:sonar.projectBaseDir="/home/travis/build/presque-fini/presque-game/"
       - msbuild game.csproj
       - mono ./scanner/SonarScanner.MSBuild.exe end -d:sonar.login="a1422381008c23a74af7aa6288a7d4a76a381075"
     - script:
