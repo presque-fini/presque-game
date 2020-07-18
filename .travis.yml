@@ -41,3 +41,5 @@ deploy:
   file: release.*.zip
   draft: true
   edge: true
+  on:
+    condition: $TRAVIS_EVENT_TYPE = cron
