@@ -14,7 +14,7 @@ namespace game.Characters
         private SpriteAnimator animator;
         private BoxCollider collider;
         private SpotLight flashLight;
-
+        private float gravity;
         private VirtualButton inputFlashlight;
         private VirtualButton inputInteract;
         private VirtualButton inputRun;
@@ -23,91 +23,62 @@ namespace game.Characters
         private Vector2 lightLeftOffset;
         private Vector2 lightRightOffset;
         private Mover mover;
+        private float runSpeed;
         private Vector2 velocity;
+        private float walkSpeed;
 
-        public float Gravity { get; set; } = 50;
-        public float JumpHeight { get; set; } = 0.2f;
-        public float MoveSpeed { get; set; } = 100;
-
+        /// <summary>
+        ///     This method is called each frame.
+        /// </summary>
         public void Update()
         {
-            var deltaMovement = Vector2.Zero;
-            var moveDir = new Vector2(inputXAxis.Value, 0);
-
-            velocity.Y += Gravity * Time.DeltaTime;
-            deltaMovement.Y = velocity.Y;
-            MoveSpeed = 100;
-            animator.Speed = 1;
-
             // Light toggle
             if (flashLight.Enabled && inputFlashlight.IsPressed)
                 flashLight.SetEnabled(false);
             else if (!flashLight.Enabled && inputFlashlight.IsPressed)
                 flashLight.SetEnabled(true);
 
-            // Interact with entities
-            foreach (var interactiveEntity in interactiveEntitiesList)
-                if (inputInteract.IsPressed && Entity.GetComponent<Collider>()
-                    .Overlaps(interactiveEntity.GetComponent<Collider>()))
-                {
-                    if (interactiveEntity.Tag == (int) Layers.Tag.Active)
-                        interactiveEntity.SetTag((int) Layers.Tag.Inactive);
-                    else
-                        interactiveEntity.SetTag((int) Layers.Tag.Active);
-                }
+            IdleAnimation();
+            Move();
+            Interact(interactiveEntitiesList);
 
-            // Alternate animation setup
-            if (animator.CurrentAnimationName == "john.idle" && animator.CurrentFrame == 0 && Random.Chance(10))
-                animation = "john.idle.alternate";
-
-            if (animator.CurrentAnimationName == "john.idle.alternate" && animator.CurrentFrame == 71)
-                animation = "john.idle";
-
-            // Recover from walk or run
-            if (animator.CurrentAnimationName != "john.idle" && animator.CurrentAnimationName != "john.idle.alternate")
-                animation = "john.idle";
-
-            if (collider.CollidesWithAny(ref deltaMovement, out var collisionResult) && collisionResult.Normal.Y < 0)
-            {
-                // reset velocity to prevent movement without user input
-                velocity = Vector2.Zero;
-                if (moveDir.X < 0)
-                {
-                    animator.FlipY = true;
-                    flashLight.Transform.SetRotationDegrees(180);
-                    flashLight.SetLocalOffset(lightRightOffset);
-                    animation = "john.walk";
-                    if (inputRun.IsDown)
-                    {
-                        animation = "john.footing";
-                        MoveSpeed = 400;
-                        animator.Speed = 1.5f;
-                    }
-
-                    velocity.X = -MoveSpeed;
-                }
-                else if (moveDir.X > 0)
-                {
-                    animator.FlipY = false;
-                    flashLight.Transform.SetRotationDegrees(0);
-                    flashLight.SetLocalOffset(lightLeftOffset);
-                    animation = "john.walk";
-                    if (inputRun.IsDown)
-                    {
-                        animation = "john.footing";
-                        MoveSpeed = 400;
-                        animator.Speed = 1.5f;
-                    }
-
-                    velocity.X = MoveSpeed;
-                }
-            }
-
-            // move the Entity to the new position. deltaMovement is already adjusted to resolve collisions for us.
-            deltaMovement += velocity * Time.DeltaTime;
-            mover.Move(deltaMovement, out collisionResult);
             if (!animator.IsAnimationActive(animation))
                 animator.Play(animation);
+        }
+
+        /// <summary>
+        ///     Loops through a list of entities tagged as Layers.Tag.Interactive. The list is built when OnAddedToEntity() is
+        ///     called.
+        /// </summary>
+        /// <param name="list">The list of entities that the player can interact with.</param>
+        private void Interact(List<Entity> list)
+        {
+            foreach (var entity in list)
+                if (inputInteract.IsPressed && Entity.GetComponent<Collider>()
+                    .Overlaps(entity.GetComponent<Collider>()))
+                {
+                    if (entity.Tag == (int) Layers.Tag.Active)
+                        entity.SetTag((int) Layers.Tag.Inactive);
+                    else
+                        entity.SetTag((int) Layers.Tag.Active);
+                }
+        }
+
+        private void IdleAnimation()
+        {
+            switch (animator.CurrentAnimationName)
+            {
+                case "john.idle" when animator.CurrentFrame == 0 && Random.Chance(10):
+                    animation = "john.idle.alternate";
+                    break;
+                case "john.idle.alternate" when animator.CurrentFrame == 71:
+                    animation = "john.idle";
+                    break;
+            }
+
+            // Recover from walk or run without interrupting the current idle animation
+            if (animator.CurrentAnimationName != "john.idle" && animator.CurrentAnimationName != "john.idle.alternate")
+                animation = "john.idle";
         }
 
         public override void OnAddedToEntity()
@@ -128,11 +99,19 @@ namespace game.Characters
             Entity.AddComponent(animator);
 
             animation = "john.idle";
+            gravity = 50;
+            runSpeed = 400;
+            walkSpeed = 100;
 
             SetupInput();
             SetupFlashLight();
 
-            interactiveEntitiesList = Entity.Scene.FindEntitiesWithTag((int) Layers.Tag.Interactive);
+            interactiveEntitiesList = BuildInteractiveEntitiesList();
+        }
+
+        private List<Entity> BuildInteractiveEntitiesList()
+        {
+            return Entity.Scene.FindEntitiesWithTag((int) Layers.Tag.Interactive);
         }
 
         private void SetupFlashLight()
@@ -151,7 +130,7 @@ namespace game.Characters
             inputFlashlight.Nodes.Add(new VirtualButton.KeyboardKey(Keys.T));
 
             inputInteract = new VirtualButton();
-            inputInteract.Nodes.Add(new VirtualButton.KeyboardKey(Keys.A));
+            inputInteract.Nodes.Add(new VirtualButton.KeyboardKey(Keys.I));
 
             inputRun = new VirtualButton();
             inputRun.Nodes.Add(new VirtualButton.KeyboardKey(Keys.LeftShift));
@@ -161,6 +140,52 @@ namespace game.Characters
             inputXAxis.Nodes.Add(new VirtualAxis.GamePadLeftStickX());
             inputXAxis.Nodes.Add(new VirtualAxis.KeyboardKeys(VirtualInput.OverlapBehavior.TakeNewer, Keys.Left,
                 Keys.Right));
+        }
+
+        private void Move()
+        {
+            var deltaMovement = Vector2.Zero;
+            var moveDir = new Vector2(inputXAxis.Value, 0);
+
+            velocity.Y += gravity * Time.DeltaTime;
+            deltaMovement.Y = velocity.Y;
+
+            // In case of collision with the ground
+            if (collider.CollidesWithAny(ref deltaMovement, out var collisionResult) && collisionResult.Normal.Y < 0)
+            {
+                velocity = Vector2.Zero;
+
+                if (moveDir.X < 0)
+                {
+                    animator.FlipY = true;
+                    flashLight.Transform.SetRotationDegrees(180);
+                    flashLight.SetLocalOffset(lightRightOffset);
+                    animation = "john.walk";
+                    velocity.X = -walkSpeed;
+                    if (inputRun.IsDown)
+                    {
+                        animation = "john.footing";
+                        velocity.X = -runSpeed;
+                    }
+                }
+                else if (moveDir.X > 0)
+                {
+                    animator.FlipY = false;
+                    flashLight.Transform.SetRotationDegrees(0);
+                    flashLight.SetLocalOffset(lightLeftOffset);
+                    animation = "john.walk";
+                    velocity.X = walkSpeed;
+                    if (inputRun.IsDown)
+                    {
+                        animation = "john.footing";
+                        velocity.X = runSpeed;
+                    }
+                }
+            }
+
+            // move the Entity to the new position.deltaMovement is already adjusted to resolve collisions for us.
+            deltaMovement += velocity * Time.DeltaTime;
+            mover.Move(deltaMovement, out collisionResult);
         }
     }
 }
