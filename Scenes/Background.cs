@@ -1,15 +1,14 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Nez;
+﻿using Nez;
 using Nez.Sprites;
 
-namespace game
+namespace game.Scenes
 {
     internal class Background : Component, IUpdatable
     {
-        private string texturePath;
-        private int renderLayer;
-        private int scale;
-        private float offset;
+        private readonly float offset;
+        private readonly int renderLayer;
+        private readonly int scale;
+        private readonly string texturePath;
 
         public Background(string texturePath, int renderLayer, int scale, float offset)
         {
@@ -19,6 +18,12 @@ namespace game
             this.offset = offset;
         }
 
+        void IUpdatable.Update()
+        {
+            var cameraPosition = Entity.Scene.Camera.Position;
+            Entity.SetPosition(cameraPosition.X * offset, Entity.Position.Y);
+        }
+
         public override void OnAddedToEntity()
         {
             var texture = Entity.Scene.Content.LoadTexture(texturePath);
@@ -26,12 +31,6 @@ namespace game
             Entity.AddComponent(new SpriteRenderer(texture)).SetRenderLayer(renderLayer);
             Entity.SetPosition(Screen.Center);
             Entity.SetScale(scale);
-        }
-
-        void IUpdatable.Update()
-        {
-            var cameraPosition = Entity.Scene.Camera.Position;
-            Entity.SetPosition(cameraPosition.X * offset, Entity.Position.Y);
         }
     }
 }

@@ -1,39 +1,18 @@
-﻿using Microsoft.Xna.Framework;
+﻿using game.Characters;
+using game.Definitions;
+using game.InteractiveObjects;
+using game.Scenes;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Media;
 using Nez;
 using Nez.DeferredLighting;
 
 namespace game
 {
-    public class Game1 : Core
+    public class PresqueGame : Core
     {
-        public Game1() : base(1280, 720)
+        public PresqueGame() : base(1280, 720)
         {
-        }
-
-        public enum RenderLayer
-        {
-            None,
-            Light,
-            Foreground,
-            Player,
-            Items,
-            Background
-        }
-
-        public enum PhysicsLayer
-        {
-            None,
-            Player,
-            Background
-        }
-
-        public enum Tag
-        {
-            None,
-            Interactive,
-            Active,
-            Inactive
         }
 
         protected override void Initialize()
@@ -43,23 +22,25 @@ namespace game
 
             var scene = Scene.CreateWithDefaultRenderer(Color.LightGoldenrodYellow);
             scene.SetDesignResolution(1280, 720, Scene.SceneResolutionPolicy.ShowAllPixelPerfect);
-            scene.AddRenderer(new DeferredLightingRenderer(0, (int) RenderLayer.Light, (int) RenderLayer.Foreground,
-                (int) RenderLayer.Player, (int) RenderLayer.Items, (int) RenderLayer.Background));
+            scene.AddRenderer(new DeferredLightingRenderer(0, (int) Layers.RenderLayer.Light,
+                (int) Layers.RenderLayer.Foreground,
+                (int) Layers.RenderLayer.Player, (int) Layers.RenderLayer.Items, (int) Layers.RenderLayer.Background));
 
             SetupLight(scene);
 
             var background = scene.CreateEntity("background");
-            background.AddComponent(new Background("Scenes/background_dark_landscape", (int) RenderLayer.Background, 2,
+            background.AddComponent(new Background("Scenes/background_dark_landscape",
+                (int) Layers.RenderLayer.Background, 2,
                 0.8f));
 
             var foreground = scene.CreateEntity("foreground");
-            foreground.AddComponent(new Foreground("rain", (int) RenderLayer.Foreground, 1, 1));
+            foreground.AddComponent(new Foreground("rain", (int) Layers.RenderLayer.Foreground, 1, 1));
 
             //Radio setup
             var radioEntity = scene.CreateEntity("radio");
             var radio = new Radio();
             radioEntity.AddComponent(radio);
-            radioEntity.SetTag((int) Tag.Interactive);
+            radioEntity.SetTag((int) Layers.Tag.Interactive);
 
             // Player setup
             var hero = scene.CreateEntity("hero");
@@ -67,8 +48,10 @@ namespace game
             hero.SetPosition(new Vector2(Screen.Center.X, 600));
 
             // Camera
-            var camera = new FollowCamera(hero, FollowCamera.CameraStyle.CameraWindow);
-            camera.FocusOffset = new Vector2(0, 225);
+            var camera = new FollowCamera(hero, FollowCamera.CameraStyle.CameraWindow)
+            {
+                FocusOffset = new Vector2(0, 225)
+            };
             var cameraEntity = scene.CreateEntity("camera");
             cameraEntity.AddComponent(camera);
 
@@ -76,7 +59,7 @@ namespace game
             var ground = scene.CreateEntity("ground");
             var groundCollider = new BoxCollider(0, Screen.Height - 10, Screen.Width * 2, 10)
             {
-                CollidesWithLayers = (int) PhysicsLayer.Player
+                CollidesWithLayers = (int) Layers.PhysicsLayer.Player
             };
             ground.AddComponent(groundCollider);
 
@@ -95,7 +78,7 @@ namespace game
             light.SetRadius(600f);
 
             var lightEntity = scene.CreateEntity("light");
-            lightEntity.AddComponent(light).SetRenderLayer((int) RenderLayer.Light);
+            lightEntity.AddComponent(light).SetRenderLayer((int) Layers.RenderLayer.Light);
             lightEntity.SetPosition(new Vector2(Screen.Center.X, 250));
         }
     }

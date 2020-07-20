@@ -1,15 +1,14 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Nez;
+﻿using Nez;
 using Nez.Sprites;
 
-namespace game
+namespace game.Scenes
 {
     internal class Foreground : Component, IUpdatable
     {
-        private string animationName;
-        private int renderLayer;
-        private int scale;
-        private float offset;
+        private readonly string animationName;
+        private readonly float offset;
+        private readonly int renderLayer;
+        private readonly int scale;
 
         public Foreground(string animationName, int renderLayer, int scale, float offset)
         {
@@ -17,6 +16,12 @@ namespace game
             this.renderLayer = renderLayer;
             this.scale = scale;
             this.offset = offset;
+        }
+
+        void IUpdatable.Update()
+        {
+            var cameraPosition = Entity.Scene.Camera.Position;
+            Entity.SetPosition(cameraPosition.X * offset, Entity.Position.Y);
         }
 
         public override void OnAddedToEntity()
@@ -30,12 +35,6 @@ namespace game
             Entity.SetScale(scale);
 
             rain.Play(animationName);
-        }
-
-        void IUpdatable.Update()
-        {
-            var cameraPosition = Entity.Scene.Camera.Position;
-            Entity.SetPosition(cameraPosition.X * offset, Entity.Position.Y);
         }
     }
 }
