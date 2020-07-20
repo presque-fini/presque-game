@@ -12,19 +12,20 @@ namespace game
 {
     public class PresqueGame : Core
     {
-        public PresqueGame() : base(1920, 1080)
+        public PresqueGame() : base(1280, 720)
         {
         }
 
         protected override void Initialize()
         {
             base.Initialize();
-            DebugRenderEnabled = true;
 
             RegisterGlobalManager(new ImGuiManager());
 
+            Window.AllowUserResizing = true;
+
             var scene = Scene.CreateWithDefaultRenderer(Color.LightGoldenrodYellow);
-            scene.SetDesignResolution(1280, 720, Scene.SceneResolutionPolicy.ShowAllPixelPerfect);
+            scene.SetDesignResolution(1280, 720, Scene.SceneResolutionPolicy.ShowAll);
             scene.AddRenderer(new DeferredLightingRenderer(0, (int) Layers.RenderLayer.Light,
                 (int) Layers.RenderLayer.Foreground,
                 (int) Layers.RenderLayer.Player, (int) Layers.RenderLayer.Items, (int) Layers.RenderLayer.Background));
@@ -37,7 +38,7 @@ namespace game
                 0.8f));
 
             var foreground = scene.CreateEntity("foreground");
-            foreground.AddComponent(new Foreground("rain", (int) Layers.RenderLayer.Foreground, 1, 1));
+            foreground.AddComponent(new Foreground("rain", 1, 1));
 
             //Radio setup
             var radioEntity = scene.CreateEntity("radio");
@@ -48,7 +49,7 @@ namespace game
             // Player setup
             var hero = scene.CreateEntity("hero");
             hero.AddComponent(new Hero());
-            hero.SetPosition(new Vector2(Screen.Center.X, 600));
+            hero.SetPosition(Screen.Center);
 
             // Camera
             var camera = new FollowCamera(hero, FollowCamera.CameraStyle.CameraWindow)

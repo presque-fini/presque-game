@@ -1,4 +1,5 @@
-﻿using Nez;
+﻿using game.Definitions;
+using Nez;
 using Nez.Sprites;
 
 namespace game.Scenes
@@ -7,13 +8,11 @@ namespace game.Scenes
     {
         private readonly string animationName;
         private readonly float offset;
-        private readonly int renderLayer;
         private readonly int scale;
 
-        public Foreground(string animationName, int renderLayer, int scale, float offset)
+        public Foreground(string animationName, int scale, float offset)
         {
             this.animationName = animationName;
-            this.renderLayer = renderLayer;
             this.scale = scale;
             this.offset = offset;
         }
@@ -29,7 +28,7 @@ namespace game.Scenes
             var atlas = Entity.Scene.Content.LoadSpriteAtlas("Content/animations.atlas");
             var rain = Entity.AddComponent<SpriteAnimator>().AddAnimationsFromAtlas(atlas);
 
-            rain.SetRenderLayer(renderLayer);
+            rain.SetRenderLayer((int) Layers.RenderLayer.Foreground);
 
             Entity.SetPosition(Screen.Center);
             Entity.SetScale(scale);
