@@ -121,6 +121,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\nez\Nez.ImGui\Nez.ImGui.csproj">
+      <Project>{3DC23F36-11E7-4950-98BF-4474AD64B157}</Project>
+      <Name>Nez.ImGui</Name>
+    </ProjectReference>
     <ProjectReference Include="..\nez\Nez.Portable\Nez.csproj">
       <Project>{b17682b1-1592-4220-bfed-692f60851ab2}</Project>
       <Name>Nez</Name>

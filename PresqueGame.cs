@@ -6,12 +6,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Media;
 using Nez;
 using Nez.DeferredLighting;
+using Nez.ImGuiTools;
 
 namespace game
 {
     public class PresqueGame : Core
     {
-        public PresqueGame() : base(1280, 720)
+        public PresqueGame() : base(1920, 1080)
         {
         }
 
@@ -19,6 +20,8 @@ namespace game
         {
             base.Initialize();
             DebugRenderEnabled = true;
+
+            RegisterGlobalManager(new ImGuiManager());
 
             var scene = Scene.CreateWithDefaultRenderer(Color.LightGoldenrodYellow);
             scene.SetDesignResolution(1280, 720, Scene.SceneResolutionPolicy.ShowAllPixelPerfect);
