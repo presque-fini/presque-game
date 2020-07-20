@@ -18,7 +18,7 @@ namespace game.Scenes
             this.offset = offset;
         }
 
-        void IUpdatable.Update()
+        public void Update()
         {
             var cameraPosition = Entity.Scene.Camera.Position;
             Entity.SetPosition(cameraPosition.X * offset, Entity.Position.Y);

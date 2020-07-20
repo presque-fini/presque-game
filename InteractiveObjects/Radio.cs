@@ -1,7 +1,6 @@
 ﻿using game.Definitions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Graphics;
 using Nez;
 using Nez.Sprites;
 
@@ -11,10 +10,9 @@ namespace game.InteractiveObjects
     {
         private AudioEmitter emitter;
         private AudioListener listener;
-        private Texture2D radioTexture;
         private SoundEffectInstance soundEffectInstance;
 
-        void IUpdatable.Update()
+        public void Update()
         {
             listener.Position = new Vector3(Entity.Scene.Entities.FindEntity("hero").Position, 0);
             emitter.Position = new Vector3(Entity.Position, 0);
@@ -37,7 +35,7 @@ namespace game.InteractiveObjects
             emitter = new AudioEmitter();
             var collider = new BoxCollider {IsTrigger = true};
 
-            radioTexture = Entity.Scene.Content.LoadTexture("Assets/Radio-front");
+            var radioTexture = Entity.Scene.Content.LoadTexture("Assets/Radio-front");
             Entity.AddComponent(new SpriteRenderer(radioTexture)).SetRenderLayer((int) Layers.RenderLayer.Items);
             Entity.AddComponent(collider);
             Entity.SetPosition(new Vector2(400, 600));

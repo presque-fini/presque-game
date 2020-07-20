@@ -29,7 +29,7 @@ namespace game.Characters
         public float JumpHeight { get; set; } = 0.2f;
         public float MoveSpeed { get; set; } = 100;
 
-        void IUpdatable.Update()
+        public void Update()
         {
             var deltaMovement = Vector2.Zero;
             var moveDir = new Vector2(inputXAxis.Value, 0);
