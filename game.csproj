@@ -50,7 +50,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Components\SoundEmitter.cs" />
     <Compile Include="Definitions\Layers.cs" />
+    <Compile Include="Interfaces\IInteractive.cs" />
     <Compile Include="Scenes\Background.cs" />
     <Compile Include="Scenes\Foreground.cs" />
     <Compile Include="PresqueGame.cs" />
