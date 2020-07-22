@@ -2,7 +2,7 @@
 using Nez;
 using Nez.Sprites;
 
-namespace game.Scenes
+namespace game
 {
     internal class Foreground : Component, IUpdatable
     {
@@ -10,7 +10,7 @@ namespace game.Scenes
         private readonly float offset;
         private readonly int scale;
 
-        public Foreground(string animationName, int scale, float offset)
+        public Foreground(string animationName, int scale, float offset = 1f)
         {
             this.animationName = animationName;
             this.scale = scale;
@@ -27,7 +27,6 @@ namespace game.Scenes
         {
             var atlas = Entity.Scene.Content.LoadSpriteAtlas("Content/animations.atlas");
             var rain = Entity.AddComponent<SpriteAnimator>().AddAnimationsFromAtlas(atlas);
-
             rain.SetRenderLayer((int) Layers.RenderLayer.Foreground);
 
             Entity.SetPosition(Screen.Center);

@@ -1,19 +1,18 @@
-﻿using Nez;
+﻿using game.Definitions;
+using Nez;
 using Nez.Sprites;
 
-namespace game.Scenes
+namespace game
 {
     internal class Background : Component, IUpdatable
     {
         private readonly float offset;
-        private readonly int renderLayer;
         private readonly int scale;
         private readonly string texturePath;
 
-        public Background(string texturePath, int renderLayer, int scale, float offset)
+        public Background(string texturePath, int scale, float offset = 0.8f)
         {
             this.texturePath = texturePath;
-            this.renderLayer = renderLayer;
             this.scale = scale;
             this.offset = offset;
         }
@@ -28,7 +27,7 @@ namespace game.Scenes
         {
             var texture = Entity.Scene.Content.LoadTexture(texturePath);
 
-            Entity.AddComponent(new SpriteRenderer(texture)).SetRenderLayer(renderLayer);
+            Entity.AddComponent(new SpriteRenderer(texture)).SetRenderLayer((int) Layers.RenderLayer.Background);
             Entity.SetPosition(Screen.Center);
             Entity.SetScale(scale);
         }
