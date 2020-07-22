@@ -139,9 +139,6 @@
 #begin nez/textures/heatDistortionNoise.xnb
 /copy:nez/textures/heatDistortionNoise.xnb
 
-#begin nez/textures/heatDistortionNoise.xnb
-/copy:nez/textures/heatDistortionNoise.xnb
-
 #begin nez/textures/textureWipeTransition/angular.xnb
 /copy:nez/textures/textureWipeTransition/angular.xnb
 
@@ -192,4 +189,22 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sound/effect.radio.ogg;Sound/effect_radio.ogg
+
+#begin World/example.tmx
+/copy:World/example.tmx
+
+#begin World/grass-tiles-2-small.png
+/copy:World/grass-tiles-2-small.png
+
+#begin World/littleshrooms_0.png
+/copy:World/littleshrooms_0.png
+
+#begin World/qubodup-bush_0.png
+/copy:World/qubodup-bush_0.png
+
+#begin World/qubodup-bush_berries_0.png
+/copy:World/qubodup-bush_berries_0.png
+
+#begin World/tree2-final.png
+/copy:World/tree2-final.png
 

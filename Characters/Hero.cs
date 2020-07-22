@@ -1,31 +1,36 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using game.Definitions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Nez;
 using Nez.DeferredLighting;
 using Nez.Sprites;
+using Random = Nez.Random;
 
 namespace game.Characters
 {
     public class Hero : Component, IUpdatable
     {
-        private string animation;
+        private string animation = "john.idle";
         private SpriteAnimator animator;
         private BoxCollider collider;
-        private SpotLight flashLight;
-        private float gravity;
+        private SpotLight flashlight;
+        private Entity flashlightEntity;
+        private readonly float gravity = 50;
         private VirtualButton inputFlashlight;
         private VirtualButton inputInteract;
         private VirtualButton inputRun;
         private VirtualIntegerAxis inputXAxis;
         private List<Entity> interactiveEntitiesList;
-        private Vector2 lightLeftOffset;
-        private Vector2 lightRightOffset;
+        private readonly Vector2 lightLeftOffset = new Vector2(6f, -35f);
+        private readonly Vector2 lightRightOffset = new Vector2(-6f, -35f);
         private Mover mover;
-        private float runSpeed;
+        private readonly float runSpeed = 400;
         private Vector2 velocity;
-        private float walkSpeed;
+        private readonly float walkSpeed = 100;
+        private readonly int sinScale = 20;
+        private readonly int timeScale = 2;
 
         /// <summary>
         ///     This method is called each frame.
@@ -33,14 +38,18 @@ namespace game.Characters
         public void Update()
         {
             // Light toggle
-            if (flashLight.Enabled && inputFlashlight.IsPressed)
-                flashLight.SetEnabled(false);
-            else if (!flashLight.Enabled && inputFlashlight.IsPressed)
-                flashLight.SetEnabled(true);
+            if (flashlight.Enabled && inputFlashlight.IsPressed)
+                flashlight.SetEnabled(false);
+            else if (!flashlight.Enabled && inputFlashlight.IsPressed)
+                flashlight.SetEnabled(true);
+
 
             IdleAnimation();
             Move();
             Interact(interactiveEntitiesList);
+
+            //flashlight.LocalOffset += new Vector2(0, (float) (Math.Sin(Time.TotalTime * timeScale)/sinScale));
+            //flashlight.Transform.LocalRotation = (float) Math.Sin(Time.TotalTime)/ sinScale;
 
             if (!animator.IsAnimationActive(animation))
                 animator.Play(animation);
@@ -83,12 +92,12 @@ namespace game.Characters
 
         public override void OnAddedToEntity()
         {
-            lightRightOffset = new Vector2(-6f, -35f);
-            lightLeftOffset = new Vector2(6f, -35f);
-
             var heroAtlas = Entity.Scene.Content.LoadSpriteAtlas("Content/animations.atlas");
 
-            collider = new BoxCollider {CollidesWithLayers = (int) Layers.PhysicsLayer.Player};
+            collider = new BoxCollider
+            {
+                CollidesWithLayers = (int) Layers.PhysicsLayer.Player
+            };
             mover = new Mover();
             animator = new SpriteAnimator();
             animator.AddAnimationsFromAtlas(heroAtlas);
@@ -98,13 +107,8 @@ namespace game.Characters
             Entity.AddComponent(mover);
             Entity.AddComponent(animator);
 
-            animation = "john.idle";
-            gravity = 50;
-            runSpeed = 400;
-            walkSpeed = 100;
-
             SetupInput();
-            SetupFlashLight();
+            AddFlashlight();
 
             interactiveEntitiesList = BuildInteractiveEntitiesList();
         }
@@ -114,14 +118,21 @@ namespace game.Characters
             return Entity.Scene.FindEntitiesWithTag((int) Layers.Tag.Interactive);
         }
 
-        private void SetupFlashLight()
+        private void AddFlashlight()
         {
-            flashLight = new SpotLight(Color.White);
-            flashLight.SetConeAngle(90);
-            flashLight.SetIntensity(2f);
-            flashLight.SetLocalOffset(lightRightOffset);
-            flashLight.SetRenderLayer((int) Layers.RenderLayer.Light);
-            Entity.AddComponent(flashLight);
+            flashlightEntity = Entity.Scene.CreateEntity("flashlight");
+            flashlightEntity.SetParent(Entity);
+
+            flashlight = new SpotLight
+            {
+                Color = Color.White,
+                ConeAngle = 90,
+                Intensity = 2f,
+                LocalOffset = lightRightOffset,
+                RenderLayer = (int) Layers.RenderLayer.Light
+            };
+
+            flashlightEntity.AddComponent(flashlight);
         }
 
         private void SetupInput()
@@ -157,9 +168,9 @@ namespace game.Characters
 
                 if (moveDir.X < 0)
                 {
-                    animator.FlipY = true;
-                    flashLight.Transform.SetRotationDegrees(180);
-                    flashLight.SetLocalOffset(lightRightOffset);
+                    animator.FlipX = true;
+                    flashlight.Transform.SetRotationDegrees(180);
+                    flashlight.SetLocalOffset(lightRightOffset);
                     animation = "john.walk";
                     velocity.X = -walkSpeed;
                     if (inputRun.IsDown)
@@ -170,9 +181,9 @@ namespace game.Characters
                 }
                 else if (moveDir.X > 0)
                 {
-                    animator.FlipY = false;
-                    flashLight.Transform.SetRotationDegrees(0);
-                    flashLight.SetLocalOffset(lightLeftOffset);
+                    animator.FlipX = false;
+                    flashlight.Transform.SetRotationDegrees(0);
+                    flashlight.SetLocalOffset(lightLeftOffset);
                     animation = "john.walk";
                     velocity.X = walkSpeed;
                     if (inputRun.IsDown)
