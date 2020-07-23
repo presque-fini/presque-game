@@ -53,10 +53,13 @@
     <Compile Include="Components\SoundEmitter.cs" />
     <Compile Include="Definitions\Layers.cs" />
     <Compile Include="Interfaces\IInteractive.cs" />
+    <Compile Include="Player\Controls.cs" />
+    <Compile Include="Player\Flashlight.cs" />
+    <Compile Include="Player\SpriteAnimation.cs" />
     <Compile Include="World\Background.cs" />
     <Compile Include="World\Foreground.cs" />
     <Compile Include="PresqueGame.cs" />
-    <Compile Include="Characters\Hero.cs" />
+    <Compile Include="Player\Hero.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="InteractiveObjects\Radio.cs" />

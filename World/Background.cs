@@ -27,7 +27,7 @@ namespace game
         {
             var texture = Entity.Scene.Content.LoadTexture(texturePath);
 
-            Entity.AddComponent(new SpriteRenderer(texture)).SetRenderLayer((int) Layers.RenderLayer.Background);
+            Entity.AddComponent(new SpriteRenderer(texture)).SetRenderLayer((int) RenderLayer.Background);
             Entity.SetPosition(Screen.Center);
             Entity.SetScale(scale);
         }

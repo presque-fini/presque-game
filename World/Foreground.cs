@@ -27,7 +27,7 @@ namespace game
         {
             var atlas = Entity.Scene.Content.LoadSpriteAtlas("Content/animations.atlas");
             var rain = Entity.AddComponent<SpriteAnimator>().AddAnimationsFromAtlas(atlas);
-            rain.SetRenderLayer((int) Layers.RenderLayer.Foreground);
+            rain.SetRenderLayer((int) RenderLayer.Foreground);
 
             Entity.SetPosition(Screen.Center);
             Entity.SetScale(scale);
