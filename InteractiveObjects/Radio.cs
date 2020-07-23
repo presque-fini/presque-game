@@ -13,7 +13,7 @@ namespace game.InteractiveObjects
 
         public void InteractWith()
         {
-            if (Entity.Tag == (int) Layers.Tag.Active)
+            if (Entity.Tag == (int) Tag.Active)
                 Entity.Position = Entity.Scene.Entities.FindEntity("hero").Position;
         }
 
@@ -28,7 +28,7 @@ namespace game.InteractiveObjects
         {
             var radioTexture = Entity.Scene.Content.LoadTexture("Assets/Radio-front");
             var collider = new BoxCollider {IsTrigger = true};
-            var renderer = new SpriteRenderer(radioTexture) {RenderLayer = (int) Layers.RenderLayer.Items};
+            var renderer = new SpriteRenderer(radioTexture) {RenderLayer = (int) RenderLayer.Items};
             soundEmitter = new SoundEmitter {SoundName = "Sound/effect_radio"};
 
             Entity.AddComponent(renderer);
