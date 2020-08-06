@@ -5,12 +5,15 @@ using Microsoft.Xna.Framework;
 using Nez;
 using Nez.Sprites;
 
-namespace game.InteractiveObjects
+namespace game
 {
     public class Radio : SoundEmitter, IUpdatable, IInteractive
     {
         private SoundEmitter soundEmitter;
 
+        /// <summary>
+        ///     Grab the radio and move it around.
+        /// </summary>
         public void InteractWith()
         {
             if (Entity.Tag == (int) Tag.Active)

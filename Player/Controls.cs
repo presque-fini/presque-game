@@ -3,8 +3,14 @@ using Nez;
 
 namespace game
 {
+    /// <summary>
+    ///     This class holds all the possible inputs.
+    /// </summary>
     public class Controls
     {
+        /// <summary>
+        ///     Define the controls.
+        /// </summary>
         public Controls()
         {
             Flashlight = new VirtualButton();
@@ -23,9 +29,24 @@ namespace game
                 Keys.Right));
         }
 
+        /// <summary>
+        ///     Turn on or off the flashlight.
+        /// </summary>
         public VirtualButton Flashlight { get; }
+
+        /// <summary>
+        ///     Interact with objects (open a door, grab an object...).
+        /// </summary>
         public VirtualButton Interact { get; }
+
+        /// <summary>
+        ///     Run modifier.
+        /// </summary>
         public VirtualButton Run { get; }
+
+        /// <summary>
+        ///     Left/right axis.
+        /// </summary>
         public VirtualIntegerAxis XAxis { get; }
     }
 }

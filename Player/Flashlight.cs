@@ -20,7 +20,7 @@ namespace game
         }
 
         /// <summary>
-        ///     determines if the flashlight should be rendered normally or flipped horizontally
+        ///     Determines if the flashlight should be rendered normally or flipped horizontally
         /// </summary>
         /// <value><c>true</c> if flip x; otherwise, <c>false</c>.</value>
         public bool FlipX
