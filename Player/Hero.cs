@@ -7,16 +7,16 @@ namespace game
 {
     public class Hero : Component, IUpdatable
     {
-        private readonly float gravity = 50;
-        private readonly float runSpeed = 400;
+        private const float gravity = 50;
+        private const float runSpeed = 400;
+        private const float walkSpeed = 100;
         private readonly int sinScale = 20;
         private readonly int timeScale = 2;
-        private readonly float walkSpeed = 100;
         private SpriteAnimation animator;
         private BoxCollider collider;
         private Controls controls;
         private Flashlight flashlight;
-        private List<Entity> interactiveEntitiesList;
+        private IEnumerable<Entity> interactiveEntitiesList;
         private Mover mover;
         private Vector2 velocity;
 
@@ -44,7 +44,7 @@ namespace game
         ///     called.
         /// </summary>
         /// <param name="list">The list of entities that the player can interact with.</param>
-        private void Interact(List<Entity> list)
+        private void Interact(IEnumerable<Entity> list)
         {
             foreach (var entity in list)
                 if (controls.Interact.IsPressed && Entity.GetComponent<Collider>()
@@ -61,7 +61,7 @@ namespace game
         {
             var heroAtlas = Entity.Scene.Content.LoadSpriteAtlas("Content/animations.atlas");
 
-            interactiveEntitiesList = BuildInteractiveEntitiesList();
+            interactiveEntitiesList = new InteractiveObjects(Entity.Scene).GetAll();
 
             controls = new Controls();
             flashlight = new Flashlight(Entity);
@@ -78,11 +78,6 @@ namespace game
             Entity.AddComponent(collider);
             Entity.AddComponent(mover);
             Entity.AddComponent(animator);
-        }
-
-        private List<Entity> BuildInteractiveEntitiesList()
-        {
-            return Entity.Scene.FindEntitiesWithTag((int) Tag.Interactive);
         }
 
         private void Move()
