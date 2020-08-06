@@ -20,20 +20,13 @@ namespace game
                 (int) RenderLayer.Items,
                 (int) RenderLayer.Background
             ));
+            
+            var map = new Map(this);
+            map.Load();
 
-            var tiledMap = Content.LoadTiledMap("Content/World/example.tmx");
-            var tiledEntity = CreateEntity("tiledEntity");
-            tiledEntity.AddComponent(new TiledMapRenderer(tiledMap, "Background"))
-                .SetRenderLayer((int) RenderLayer.Player);
-
-            var objectLayer = tiledMap.GetObjectGroup("Objects").Objects;
-            var spawn = Vector2.Zero;
-            foreach (var tmxObject in objectLayer)
-                if (tmxObject.Name == "Spawn")
-                    spawn = new Vector2(tmxObject.X, tmxObject.Y);
             var john = CreateEntity("john");
             john.AddComponent(new Hero());
-            john.SetPosition(new Vector2(spawn.X, spawn.Y));
+            john.SetPosition(map.SpawnPosition);
 
             var camera = new FollowCamera(john, FollowCamera.CameraStyle.CameraWindow);
             camera.FocusOffset = new Vector2(0, 225);
